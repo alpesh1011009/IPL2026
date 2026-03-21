@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-pnpm --no-git)",
+      "Read(//c/Project/**)",
+      "Bash(npx create-next-app@latest iplpro-app --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-pnpm --no-git)",
+      "Bash(npx create-next-app@latest iplpro-app --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-pnpm --no-git --turbopack)",
+      "Bash(pnpm init:*)",
+      "Bash(pnpm build:*)",
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(taskkill //F //PID 44732)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "WebFetch(domain:www.iplt20.com)",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://www.iplt20.com/teams/chennai-super-kings/squad)",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://www.iplt20.com/teams/mumbai-indians/squad)",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://www.iplt20.com/teams/royal-challengers-bengaluru/squad)",
+      "WebSearch",
+      "WebFetch(domain:documents.iplt20.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:www.espncricinfo.com)",
+      "WebFetch(domain:www.olympics.com)",
+      "WebFetch(domain:www.myvi.in)",
+      "WebFetch(domain:www.cricketnews.com)",
+      "WebFetch(domain:iplonly.com)",
+      "WebFetch(domain:www.timesofsports.com)",
+      "WebFetch(domain:crex.com)",
+      "WebFetch(domain:www.cricketcountry.com)",
+      "Bash(tasklist)"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
+    ]
+  }
+}
