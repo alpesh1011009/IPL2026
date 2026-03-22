@@ -350,7 +350,7 @@ function BrandingFooter({
             position: "relative",
           }}
         >
-          Cricket 2026
+          IPL 2026
         </span>
       </div>
     </div>
@@ -479,7 +479,7 @@ function CardFace({ player, team, businessDetails }: Props) {
             textTransform: "uppercase",
           }}
         >
-          Cricket 2026
+          IPL 2026
         </div>
       </div>
 

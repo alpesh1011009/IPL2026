@@ -249,7 +249,7 @@ export function TeamDownload({ team }: { team: Team }) {
                     <div className="relative z-10 flex items-center justify-between">
                       <div>
                         <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/60">
-                          Cricket 2026
+                          IPL 2026
                         </p>
                         <h2 className="mt-0.5 text-xl font-black text-white leading-tight">
                           {team.name}

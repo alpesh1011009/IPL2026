@@ -170,7 +170,7 @@ export function ScheduleDownload({ matches }: { matches: Match[] }) {
                 <div ref={scheduleRef} className="bg-[#09090b] p-5" style={{ width: "500px" }}>
                   {/* Header */}
                   <div className="mb-4 rounded-xl bg-gradient-to-r from-[#1a1145] via-[#2d1b69] to-[#1a1145] p-4 text-center">
-                    <p className="text-lg font-black text-white tracking-wide">Cricket 2026</p>
+                    <p className="text-lg font-black text-white tracking-wide">IPL 2026</p>
                     <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-purple-300">
                       Match Schedule &bull; Phase 1
                     </p>

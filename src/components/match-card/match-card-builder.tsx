@@ -144,7 +144,7 @@ function BrandingFooter({ primaryColor, secondaryColor }: { primaryColor: string
           <div style={{ width: 5, height: 5, background: secondaryColor, transform: "rotate(45deg)", opacity: 0.7, borderRadius: 1 }} />
         </div>
         <span style={{ color: "rgba(255,255,255,0.12)", fontSize: 7.5, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", position: "relative" }}>
-          Cricket 2026
+          IPL 2026
         </span>
       </div>
     </div>
@@ -222,7 +222,7 @@ function CardFace({ matchNumber, team1, team2, date, day, time, venue, userPhoto
           </span>
         </div>
         <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em" }}>
-          Cricket 2026 · #{matchNumber}
+          IPL 2026 · #{matchNumber}
         </span>
       </div>
 

@@ -435,7 +435,7 @@ export function OwnPosterBuilder() {
           {/* IPL badge */}
           <div className="relative px-5 pt-5 pb-1 text-center">
             <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-white/50">
-              Cricket 2026
+              IPL 2026
             </p>
           </div>
 
@@ -517,7 +517,7 @@ export function OwnPosterBuilder() {
             {/* Heart row */}
             <div className="mt-4 flex items-center gap-2">
               <Heart className="h-4 w-4 fill-red-400 text-red-400" />
-              <span className="text-xs font-bold text-white/50">Cricket 2026</span>
+              <span className="text-xs font-bold text-white/50">IPL 2026</span>
               <Heart className="h-4 w-4 fill-red-400 text-red-400" />
             </div>
 

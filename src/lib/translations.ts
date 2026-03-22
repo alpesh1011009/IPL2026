@@ -107,7 +107,7 @@ const translations = {
 
     // ── Schedule page ───────────────────────────────
     phase1Schedule: "Phase 1 Schedule",
-    cricket2026MatchSchedule: "Cricket 2026",
+    cricket2026MatchSchedule: "IPL 2026",
     matchSchedule: "Match Schedule",
     scheduleSubtitle: (matches: number, venues: number) =>
       `${matches} matches (Phase 1) • ${venues} venues • Click any match to create a poster`,
@@ -128,7 +128,7 @@ const translations = {
     pngFormat: "PNG Format",
 
     // ── Teams page ────────────────────────────────────
-    cricket2026Badge: "Cricket 2026",
+    cricket2026Badge: "IPL 2026",
     allTeamsTitle: "All Teams &",
     allTeamsHighlight: "Squads",
     teamsSubtitle: (teams: number, players: number) =>
