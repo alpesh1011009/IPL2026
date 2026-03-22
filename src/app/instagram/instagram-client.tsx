@@ -3,6 +3,8 @@
 import { useState, useRef } from "react";
 import { Copy, Check, Download, Loader2, Instagram } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useBusinessDetails } from "@/hooks/use-business-details";
+import type { BusinessDetails } from "@/hooks/use-business-details";
 
 type PostCategory = "All" | "Hype" | "Team" | "Fact" | "Matchday" | "Prediction";
 
@@ -59,10 +61,10 @@ const POSTS: InstaPost[] = [
     id: 4,
     category: "Team",
     emoji: "🔴",
-    headline: "EE SALA\nCUP\nNAMDE",
-    subline: "Royal Challengers Bengaluru ❤️",
+    headline: "DEFENDING\nCHAMPIONS\n🏆",
+    subline: "Royal Challengers Bengaluru ❤️ IPL 2025 Winners",
     caption:
-      "❤️ 18 years of faith. Still standing strong.\n\nRCB fans are built from a different kind of passion. Every season, every heartbreak — and yet here we are, believing harder than ever.\n\nThis season FEELS different. Ee Sala Cup Namde! 🏆\n\n#RCB #EeSalaCupNamde #RoyalChallengers #Bengaluru #IPL2026 #Virat #CricketIndia",
+      "❤️ From 'Ee Sala Cup Namde' to CHAMPIONS! 🏆\n\nRCB finally lifted the IPL trophy in 2025 — rewarding millions of fans who never stopped believing. Now they're back to defend the crown in IPL 2026!\n\nCan they go back-to-back? Drop a ❤️ if you believe!\n\n#RCB #RCBChampions #RoyalChallengers #Bengaluru #IPL2026 #Virat #DefendingChampions #CricketIndia",
     gradientClass: "bg-gradient-to-br from-red-600 to-red-950",
     decorClass: "bg-yellow-500/15",
     lightText: true,
@@ -134,7 +136,7 @@ const POSTS: InstaPost[] = [
     headline: "IPL\nCHAMPIONS\nBOARD",
     subline: "Who has lifted the trophy?",
     caption:
-      "📊 IPL Championship Roll Call — Who's on the winners list?\n\n🥇 MI — 5 titles\n🥇 CSK — 5 titles\n🥇 KKR — 3 titles\n🥇 SRH — 1 title\n🥇 RR — 1 title\n🥇 GT — 1 title\n\nWho adds another star in IPL 2026? 👇\n\n#IPL2026 #Cricket #CricketFacts #IPLHistory #IndianPremierLeague #BCCI",
+      "📊 IPL Championship Roll Call — Who's on the winners list?\n\n🥇 MI — 5 titles\n🥇 CSK — 5 titles\n🥇 KKR — 3 titles\n🥇 SRH — 1 title\n🥇 RR — 1 title\n🥇 GT — 1 title\n🥇 RCB — 1 title\n\nWho adds another star in IPL 2026? 👇\n\n#IPL2026 #Cricket #CricketFacts #IPLHistory #IndianPremierLeague #BCCI",
     gradientClass: "bg-gradient-to-br from-slate-700 to-slate-950",
     decorClass: "bg-yellow-500/10",
     lightText: true,
@@ -212,7 +214,103 @@ const CATEGORY_COLORS: Record<PostCategory, string> = {
   Prediction: "bg-violet-500/10 text-violet-400 border-violet-500/20",
 };
 
-function PostCard({ post }: { post: InstaPost }) {
+// ─── inline SVG icons (for html2canvas compatibility) ────────────────────────
+
+const IgIcon = ({ size = 10, color = "#f472b6" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <circle cx="12" cy="12" r="4.5" />
+    <circle cx="17.5" cy="6.5" r="1.2" fill={color} stroke="none" />
+  </svg>
+);
+
+const FbIcon = ({ size = 10, color = "#60a5fa" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={color}>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+
+const XIcon = ({ size = 10, color = "rgba(255,255,255,0.55)" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={color}>
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
+const PhoneIcon = ({ size = 9, color = "rgba(255,255,255,0.5)" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.58 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.48 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6 6l1.67-1.67a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 14.92z" />
+  </svg>
+);
+
+const GlobeIcon = ({ size = 9, color = "rgba(255,255,255,0.5)" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <line x1="2" y1="12" x2="22" y2="12" />
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+  </svg>
+);
+
+function InstaBusinessFooter({ details }: { details: BusinessDetails }) {
+  const hasAny = !!(details.companyName || details.phone || details.website || details.instagram || details.facebook || details.twitter || details.logoUrl);
+  if (!hasAny) return null;
+
+  const hasSocial = !!(details.instagram || details.facebook || details.twitter);
+  const hasContact = !!(details.phone || details.website);
+
+  return (
+    <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 20 }}>
+      <div style={{ background: "rgba(0,0,0,0.75)", backdropFilter: "blur(8px)", padding: "8px 14px 10px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          {details.logoUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={details.logoUrl} alt="logo" style={{ width: 32, height: 32, borderRadius: 7, objectFit: "contain", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)", padding: 3, flexShrink: 0 }} />
+          )}
+          <div style={{ flex: 1, minWidth: 0 }}>
+            {details.companyName && (
+              <div style={{ color: "#ffffff", fontWeight: 800, fontSize: 11, lineHeight: 1.2, letterSpacing: "-0.2px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", marginBottom: hasContact || hasSocial ? 2 : 0 }}>
+                {details.companyName}
+              </div>
+            )}
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "2px 8px" }}>
+              {details.phone && (
+                <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap" }}>
+                  <PhoneIcon size={7} color="rgba(255,255,255,0.5)" />
+                  {details.phone}
+                </span>
+              )}
+              {details.website && (
+                <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap", maxWidth: 110, overflow: "hidden", textOverflow: "ellipsis" }}>
+                  <GlobeIcon size={7} color="rgba(255,255,255,0.5)" />
+                  {details.website}
+                </span>
+              )}
+              {details.instagram && (
+                <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "#f472b6", whiteSpace: "nowrap" }}>
+                  <IgIcon size={8} color="#f472b6" />
+                  {details.instagram}
+                </span>
+              )}
+              {details.facebook && (
+                <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "#60a5fa", whiteSpace: "nowrap" }}>
+                  <FbIcon size={8} color="#60a5fa" />
+                  {details.facebook}
+                </span>
+              )}
+              {details.twitter && (
+                <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "rgba(255,255,255,0.55)", whiteSpace: "nowrap" }}>
+                  <XIcon size={8} color="rgba(255,255,255,0.55)" />
+                  {details.twitter}
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PostCard({ post, businessDetails }: { post: InstaPost; businessDetails: BusinessDetails }) {
   const visualRef = useRef<HTMLDivElement>(null);
   const [downloading, setDownloading] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -281,17 +379,22 @@ function PostCard({ post }: { post: InstaPost }) {
           </p>
         </div>
 
-        {/* Bottom branding */}
-        <div className="absolute bottom-3 left-0 right-0 flex justify-center">
-          <span
-            className={cn(
-              "text-[10px] font-semibold tracking-widest uppercase",
-              post.lightText ? "text-white/40" : "text-gray-600/60"
-            )}
-          >
-            IPL 2026 · cricpost.in
-          </span>
-        </div>
+        {/* Business footer overlay */}
+        <InstaBusinessFooter details={businessDetails} />
+
+        {/* Bottom branding (pushed up if business footer present) */}
+        {!(businessDetails.companyName || businessDetails.phone || businessDetails.website || businessDetails.instagram || businessDetails.facebook || businessDetails.twitter || businessDetails.logoUrl) && (
+          <div className="absolute bottom-3 left-0 right-0 flex justify-center">
+            <span
+              className={cn(
+                "text-[10px] font-semibold tracking-widest uppercase",
+                post.lightText ? "text-white/40" : "text-gray-600/60"
+              )}
+            >
+              IPL 2026 · cricpost.in
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Caption & Actions */}
@@ -346,6 +449,7 @@ function PostCard({ post }: { post: InstaPost }) {
 
 export function InstagramClient() {
   const [activeCategory, setActiveCategory] = useState<PostCategory>("All");
+  const { details: businessDetails } = useBusinessDetails();
 
   const filtered =
     activeCategory === "All" ? POSTS : POSTS.filter((p) => p.category === activeCategory);
@@ -414,7 +518,7 @@ export function InstagramClient() {
       {/* Posts Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {filtered.map((post) => (
-          <PostCard key={post.id} post={post} />
+          <PostCard key={post.id} post={post} businessDetails={businessDetails} />
         ))}
       </div>
 
