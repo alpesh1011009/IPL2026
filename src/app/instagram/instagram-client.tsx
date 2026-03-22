@@ -250,70 +250,78 @@ const GlobeIcon = ({ size = 9, color = "rgba(255,255,255,0.5)" }: { size?: numbe
   </svg>
 );
 
-function InstaBusinessFooter({ details }: { details: BusinessDetails }) {
+function InstaBusinessFooter({ details, lightText }: { details: BusinessDetails; lightText: boolean }) {
   const hasAny = !!(details.companyName || details.phone || details.website || details.instagram || details.facebook || details.twitter || details.logoUrl);
-  if (!hasAny) return null;
-
   const hasSocial = !!(details.instagram || details.facebook || details.twitter);
   const hasContact = !!(details.phone || details.website);
 
   return (
     <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 20 }}>
-      <div style={{ background: "rgba(0,0,0,0.75)", backdropFilter: "blur(8px)", padding: "8px 14px 10px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          {details.logoUrl && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={details.logoUrl} alt="logo" style={{ width: 32, height: 32, borderRadius: 7, objectFit: "contain", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)", padding: 3, flexShrink: 0 }} />
-          )}
-          <div style={{ flex: 1, minWidth: 0 }}>
-            {details.companyName && (
-              <div style={{ color: "#ffffff", fontWeight: 800, fontSize: 11, lineHeight: 1.2, letterSpacing: "-0.2px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", marginBottom: hasContact || hasSocial ? 2 : 0 }}>
-                {details.companyName}
-              </div>
+      {/* Business details section */}
+      {hasAny && (
+        <div style={{ background: "rgba(0,0,0,0.7)", backdropFilter: "blur(8px)", padding: "8px 14px 6px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            {details.logoUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={details.logoUrl} alt="logo" style={{ width: 32, height: 32, borderRadius: 7, objectFit: "contain", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)", padding: 3, flexShrink: 0 }} />
             )}
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "2px 8px" }}>
-              {details.phone && (
-                <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap" }}>
-                  <PhoneIcon size={7} color="rgba(255,255,255,0.5)" />
-                  {details.phone}
-                </span>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              {details.companyName && (
+                <div style={{ color: "#ffffff", fontWeight: 800, fontSize: 11, lineHeight: 1.2, letterSpacing: "-0.2px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", marginBottom: hasContact || hasSocial ? 2 : 0 }}>
+                  {details.companyName}
+                </div>
               )}
-              {details.website && (
-                <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap", maxWidth: 110, overflow: "hidden", textOverflow: "ellipsis" }}>
-                  <GlobeIcon size={7} color="rgba(255,255,255,0.5)" />
-                  {details.website}
-                </span>
-              )}
-              {details.instagram && (
-                <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "#f472b6", whiteSpace: "nowrap" }}>
-                  <IgIcon size={8} color="#f472b6" />
-                  {details.instagram}
-                </span>
-              )}
-              {details.facebook && (
-                <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "#60a5fa", whiteSpace: "nowrap" }}>
-                  <FbIcon size={8} color="#60a5fa" />
-                  {details.facebook}
-                </span>
-              )}
-              {details.twitter && (
-                <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "rgba(255,255,255,0.55)", whiteSpace: "nowrap" }}>
-                  <XIcon size={8} color="rgba(255,255,255,0.55)" />
-                  {details.twitter}
-                </span>
-              )}
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "2px 8px" }}>
+                {details.phone && (
+                  <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap" }}>
+                    <PhoneIcon size={7} color="rgba(255,255,255,0.5)" />
+                    {details.phone}
+                  </span>
+                )}
+                {details.website && (
+                  <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap", maxWidth: 110, overflow: "hidden", textOverflow: "ellipsis" }}>
+                    <GlobeIcon size={7} color="rgba(255,255,255,0.5)" />
+                    {details.website}
+                  </span>
+                )}
+                {details.instagram && (
+                  <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "#f472b6", whiteSpace: "nowrap" }}>
+                    <IgIcon size={8} color="#f472b6" />
+                    {details.instagram}
+                  </span>
+                )}
+                {details.facebook && (
+                  <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "#60a5fa", whiteSpace: "nowrap" }}>
+                    <FbIcon size={8} color="#60a5fa" />
+                    {details.facebook}
+                  </span>
+                )}
+                {details.twitter && (
+                  <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 8, color: "rgba(255,255,255,0.55)", whiteSpace: "nowrap" }}>
+                    <XIcon size={8} color="rgba(255,255,255,0.55)" />
+                    {details.twitter}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>
+      )}
+      {/* cricpost.in branding — always visible */}
+      <div style={{ background: hasAny ? "rgba(0,0,0,0.85)" : "transparent", padding: "4px 0", textAlign: "center" }}>
+        <span style={{ fontSize: 9, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: hasAny ? "rgba(255,255,255,0.35)" : lightText ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.35)" }}>
+          IPL 2026 · cricpost.in
+        </span>
       </div>
     </div>
   );
 }
 
-function PostCard({ post, businessDetails }: { post: InstaPost; businessDetails: BusinessDetails }) {
+function PostCard({ post, businessDetails, hasBusinessData }: { post: InstaPost; businessDetails: BusinessDetails; hasBusinessData: boolean }) {
   const visualRef = useRef<HTMLDivElement>(null);
   const [downloading, setDownloading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [showBusiness, setShowBusiness] = useState(true);
 
   async function handleDownload() {
     if (!visualRef.current) return;
@@ -341,6 +349,9 @@ function PostCard({ post, businessDetails }: { post: InstaPost; businessDetails:
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   }
+
+  const EMPTY_DETAILS: BusinessDetails = { companyName: "", phone: "", website: "", instagram: "", facebook: "", twitter: "", logoUrl: "" };
+  const activeDetails = showBusiness && hasBusinessData ? businessDetails : EMPTY_DETAILS;
 
   return (
     <div className="flex flex-col rounded-2xl border border-white/10 bg-card overflow-hidden hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
@@ -379,35 +390,39 @@ function PostCard({ post, businessDetails }: { post: InstaPost; businessDetails:
           </p>
         </div>
 
-        {/* Business footer overlay */}
-        <InstaBusinessFooter details={businessDetails} />
-
-        {/* Bottom branding (pushed up if business footer present) */}
-        {!(businessDetails.companyName || businessDetails.phone || businessDetails.website || businessDetails.instagram || businessDetails.facebook || businessDetails.twitter || businessDetails.logoUrl) && (
-          <div className="absolute bottom-3 left-0 right-0 flex justify-center">
-            <span
-              className={cn(
-                "text-[10px] font-semibold tracking-widest uppercase",
-                post.lightText ? "text-white/40" : "text-gray-600/60"
-              )}
-            >
-              IPL 2026 · cricpost.in
-            </span>
-          </div>
-        )}
+        {/* Footer — always present (branding always, business conditionally) */}
+        <InstaBusinessFooter details={activeDetails} lightText={post.lightText} />
       </div>
 
       {/* Caption & Actions */}
       <div className="flex flex-col gap-3 p-4">
-        {/* Category badge */}
-        <span
-          className={cn(
-            "self-start inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider",
-            CATEGORY_COLORS[post.category]
+        <div className="flex items-center justify-between">
+          {/* Category badge */}
+          <span
+            className={cn(
+              "inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider",
+              CATEGORY_COLORS[post.category]
+            )}
+          >
+            {post.category}
+          </span>
+
+          {/* Business info toggle */}
+          {hasBusinessData && (
+            <button
+              onClick={() => setShowBusiness((v) => !v)}
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition-all border",
+                showBusiness
+                  ? "bg-primary/10 text-primary border-primary/25"
+                  : "bg-white/5 text-muted-foreground border-white/10 hover:border-white/20"
+              )}
+            >
+              <span className={cn("h-1.5 w-1.5 rounded-full", showBusiness ? "bg-primary" : "bg-muted-foreground/50")} />
+              Business
+            </button>
           )}
-        >
-          {post.category}
-        </span>
+        </div>
 
         {/* Caption preview */}
         <p className="text-xs text-muted-foreground leading-relaxed line-clamp-4 whitespace-pre-line">
@@ -450,6 +465,8 @@ function PostCard({ post, businessDetails }: { post: InstaPost; businessDetails:
 export function InstagramClient() {
   const [activeCategory, setActiveCategory] = useState<PostCategory>("All");
   const { details: businessDetails } = useBusinessDetails();
+
+  const hasBusinessData = !!(businessDetails.companyName || businessDetails.phone || businessDetails.website || businessDetails.instagram || businessDetails.facebook || businessDetails.twitter || businessDetails.logoUrl);
 
   const filtered =
     activeCategory === "All" ? POSTS : POSTS.filter((p) => p.category === activeCategory);
@@ -518,7 +535,7 @@ export function InstagramClient() {
       {/* Posts Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {filtered.map((post) => (
-          <PostCard key={post.id} post={post} businessDetails={businessDetails} />
+          <PostCard key={post.id} post={post} businessDetails={businessDetails} hasBusinessData={hasBusinessData} />
         ))}
       </div>
 
