@@ -93,7 +93,8 @@ export function useBusinessDetails() {
 
     if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
     saveTimerRef.current = setTimeout(() => {
-      upsertProfile(user.id, { ...details, logoUrl: "" });
+      const { logoUrl: _logo, ...detailsWithoutLogo } = details;
+      upsertProfile(user.id, detailsWithoutLogo);
     }, 1500);
 
     return () => {
