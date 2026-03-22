@@ -1,5 +1,6 @@
 "use client";
 
+import { Instagram } from "lucide-react";
 import { useLanguage } from "@/context/language-context";
 
 export function Footer() {
@@ -22,7 +23,16 @@ export function Footer() {
               cricpost<span className="text-primary">.in</span>
             </span>
           </div>
-          <div className="flex flex-col items-center gap-1 sm:items-end">
+          <div className="flex flex-col items-center gap-2 sm:items-end">
+            <a
+              href="https://instagram.com/cricpost_in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-pink-400"
+            >
+              <Instagram className="h-3.5 w-3.5" />
+              @cricpost_in
+            </a>
             <p className="text-xs text-muted-foreground">{t("footerDisclaimer")}</p>
             <a
               href="/terms"

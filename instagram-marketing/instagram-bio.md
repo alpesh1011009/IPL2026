@@ -8,7 +8,7 @@ Use `profile-pic.svg` — convert to JPG/PNG at 320×320 px before uploading.
 ---
 
 ## Username
-**@cricpost.in** or **@cricpost_in**
+**@cricpost_in** ✓ confirmed
 
 ---
 

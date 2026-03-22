@@ -350,7 +350,7 @@ function BusinessDetailsDropdown({ externalOpen, onExternalOpenConsumed }: { ext
                 {saved ? <><Check className="h-3.5 w-3.5" /> {t("saved")}</> : <><Save className="h-3.5 w-3.5" /> {t("save")}</>}
               </button>
               <Link
-                href="/poster"
+                href="/own-poster"
                 onClick={() => setOpen(false)}
                 className="flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-primary py-2 text-xs font-bold text-primary-foreground hover:bg-primary/90 transition-all"
               >
@@ -696,7 +696,7 @@ export function Header() {
           )}
 
           <Link
-            href="/poster"
+            href="/own-poster"
             onClick={() => setMobileOpen(false)}
             className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground"
           >
