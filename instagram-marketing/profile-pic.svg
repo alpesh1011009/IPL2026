@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320">
+  <defs>
+    <linearGradient id="bgPP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#18181b"/>
+      <stop offset="100%" style="stop-color:#09090b"/>
+    </linearGradient>
+    <linearGradient id="ballPP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="60%" style="stop-color:#ea580c"/>
+      <stop offset="100%" style="stop-color:#9a3412"/>
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="50%" style="stop-color:#fb923c"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+    <radialGradient id="glowPP" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:0"/>
+    </radialGradient>
+    <clipPath id="circle">
+      <circle cx="160" cy="160" r="160"/>
+    </clipPath>
+    <filter id="ballGlowPP">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="textGlowPP">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Clipped circle background -->
+  <g clip-path="url(#circle)">
+    <rect width="320" height="320" fill="url(#bgPP)"/>
+
+    <!-- Glow center -->
+    <circle cx="160" cy="160" r="160" fill="url(#glowPP)"/>
+
+    <!-- Subtle radial lines (stadium lights effect) -->
+    <g stroke="#f97316" stroke-width="1" opacity="0.06">
+      <line x1="160" y1="160" x2="0" y2="0"/>
+      <line x1="160" y1="160" x2="160" y2="0"/>
+      <line x1="160" y1="160" x2="320" y2="0"/>
+      <line x1="160" y1="160" x2="320" y2="160"/>
+      <line x1="160" y1="160" x2="320" y2="320"/>
+      <line x1="160" y1="160" x2="160" y2="320"/>
+      <line x1="160" y1="160" x2="0" y2="320"/>
+      <line x1="160" y1="160" x2="0" y2="160"/>
+      <line x1="160" y1="160" x2="80" y2="0"/>
+      <line x1="160" y1="160" x2="240" y2="0"/>
+      <line x1="160" y1="160" x2="320" y2="80"/>
+      <line x1="160" y1="160" x2="320" y2="240"/>
+      <line x1="160" y1="160" x2="240" y2="320"/>
+      <line x1="160" y1="160" x2="80" y2="320"/>
+      <line x1="160" y1="160" x2="0" y2="240"/>
+      <line x1="160" y1="160" x2="0" y2="80"/>
+    </g>
+
+    <!-- Cricket ball (main graphic) -->
+    <circle cx="160" cy="130" r="84" fill="url(#ballPP)" filter="url(#ballGlowPP)"/>
+    <!-- Seam horizontal -->
+    <path d="M 76 130 Q 110 112 160 130 Q 210 148 244 130" fill="none" stroke="#7c2d12" stroke-width="4.5" stroke-linecap="round"/>
+    <!-- Seam arc top -->
+    <path d="M 102 68 Q 160 96 218 68" fill="none" stroke="#7c2d12" stroke-width="3" stroke-linecap="round"/>
+    <!-- Seam arc bottom -->
+    <path d="M 102 192 Q 160 164 218 192" fill="none" stroke="#7c2d12" stroke-width="3" stroke-linecap="round"/>
+    <!-- Highlight -->
+    <ellipse cx="132" cy="100" rx="22" ry="14" fill="white" opacity="0.18" transform="rotate(-20, 132, 100)"/>
+
+    <!-- "CP" monogram on ball (for very small display sizes) - subtle -->
+    <!-- Wordmark below ball -->
+    <text x="160" y="256" font-family="'Arial Black', 'Impact', sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle" letter-spacing="-1" filter="url(#textGlowPP)">CricPost</text>
+    <text x="160" y="294" font-family="'Arial Black', sans-serif" font-size="24" font-weight="700" fill="#f97316" text-anchor="middle" letter-spacing="3">.in</text>
+  </g>
+
+  <!-- Outer ring -->
+  <circle cx="160" cy="160" r="157" fill="none" stroke="url(#ringGrad)" stroke-width="5"/>
+
+  <!-- Inner subtle ring -->
+  <circle cx="160" cy="160" r="148" fill="none" stroke="#f97316" stroke-width="1" opacity="0.2"/>
+</svg>

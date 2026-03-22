@@ -84,6 +84,8 @@ const translations = {
     toolTeamsDesc: "All cricket franchise teams with squads and stats.",
     toolCricketQuiz: "Cricket Quiz",
     toolCricketQuizDesc: "15-question IPL trivia. Test your cricket knowledge!",
+    toolInstagram: "Instagram Posts",
+    toolInstagramDesc: "Ready-made IPL images with captions. Download & post instantly.",
     badgeMostPopular: "Most Popular",
     badgeNew: "New",
 
@@ -247,6 +249,8 @@ const translations = {
     toolTeamsDesc: "स्क्वाड और स्टैट्स के साथ सभी क्रिकेट फ्रेंचाइज़ी टीमें।",
     toolCricketQuiz: "क्रिकेट क्विज़",
     toolCricketQuizDesc: "15 सवालों का आईपीएल ट्रिविया। अपना क्रिकेट ज्ञान परखें!",
+    toolInstagram: "Instagram पोस्ट",
+    toolInstagramDesc: "तैयार IPL इमेज और कैप्शन। डाउनलोड करें और तुरंत पोस्ट करें।",
     badgeMostPopular: "सबसे लोकप्रिय",
     badgeNew: "नया",
 
@@ -410,6 +414,8 @@ const translations = {
     toolTeamsDesc: "સ્ક્વોડ અને આંકડા સાથે તમામ ક્રિકેટ ફ્રેન્ચાઇઝ ટીમો.",
     toolCricketQuiz: "ક્રિકેટ ક્વિઝ",
     toolCricketQuizDesc: "15 સવાલ IPL ટ્રિવિયા. તમારું ક્રિકેટ જ્ઞાન ચકાસો!",
+    toolInstagram: "Instagram પોસ્ટ",
+    toolInstagramDesc: "તૈયાર IPL ઇમેજ અને કેપ્શન. ડાઉનલોડ કરો અને તરત પોસ્ટ કરો.",
     badgeMostPopular: "સૌથી લોકપ્રિય",
     badgeNew: "નવું",
 

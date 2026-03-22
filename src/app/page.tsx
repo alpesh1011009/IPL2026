@@ -17,6 +17,7 @@ import {
   Ticket,
   ChevronRight,
   HelpCircle,
+  Instagram,
 } from "lucide-react";
 import { iplTeams, teamLogoUrls } from "@/data/teams";
 import { iplSchedule, teamTextColors } from "@/data/schedule";
@@ -44,6 +45,7 @@ const toolDefs: {
   { href: "/schedule", icon: CalendarDays, labelKey: "toolSchedule", descKey: "toolScheduleDesc", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20" },
   { href: "/teams", icon: Users, labelKey: "toolTeams", descKey: "toolTeamsDesc", color: "text-orange-400", bg: "bg-orange-500/10", border: "border-orange-500/20" },
   { href: "/quiz", icon: HelpCircle, labelKey: "toolCricketQuiz", descKey: "toolCricketQuizDesc", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20", badgeKey: "badgeNew", badgeColor: "bg-cyan-500/20 text-cyan-300" },
+  { href: "/instagram", icon: Instagram, labelKey: "toolInstagram", descKey: "toolInstagramDesc", color: "text-pink-400", bg: "bg-pink-500/10", border: "border-pink-500/20", badgeKey: "badgeNew", badgeColor: "bg-pink-500/20 text-pink-300" },
 ];
 
 export default function HomePage() {
@@ -164,8 +166,11 @@ export default function HomePage() {
             {/* Text */}
             <div>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
-                <Trophy className="h-3.5 w-3.5" />
-                Cricket Season is LIVE
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+                </span>
+                TATA IPL 2025 &bull; Season Live
               </div>
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
                 {t("heroH1a")}{" "}
@@ -256,6 +261,80 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── IPL 2025 Highlight + Quick Navigate ───────────── */}
+      <section className="border-t border-white/5">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+
+          {/* IPL 2025 Featured Banner */}
+          <div className="relative overflow-hidden rounded-2xl border border-primary/40 bg-gradient-to-r from-primary/20 via-primary/8 to-transparent p-4 sm:p-5 mb-6">
+            <div className="absolute -left-10 -top-10 h-48 w-48 rounded-full bg-primary/20 blur-3xl pointer-events-none" />
+            <div className="absolute right-0 bottom-0 h-32 w-32 rounded-full bg-primary/10 blur-2xl pointer-events-none" />
+            <div className="relative flex flex-col sm:flex-row sm:items-center gap-4">
+              {/* Trophy + Title */}
+              <div className="flex items-center gap-3">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/20 ring-1 ring-primary/40">
+                  <Trophy className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-xl font-black tracking-tight text-white">TATA IPL 2025</span>
+                    <span className="inline-flex items-center gap-1 rounded-full border border-red-500/40 bg-red-500/15 px-2 py-0.5 text-[10px] font-bold text-red-400">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-red-400" />
+                      </span>
+                      LIVE
+                    </span>
+                  </div>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    Mar 22 – Jun 1, 2025 &bull; 10 Teams &bull; 74 Matches &bull; India&apos;s Biggest Cricket League
+                  </p>
+                </div>
+              </div>
+              {/* Quick CTA buttons */}
+              <div className="flex flex-wrap gap-2 sm:ml-auto">
+                <Link href="/schedule" className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-xs font-bold text-primary-foreground shadow-md shadow-primary/20 hover:bg-primary/90 transition-all">
+                  <CalendarDays className="h-3.5 w-3.5" /> Schedule
+                </Link>
+                <Link href="/poster" className="inline-flex items-center gap-1.5 rounded-lg border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-bold text-primary hover:bg-primary/20 transition-all">
+                  <Zap className="h-3.5 w-3.5" /> Make Poster
+                </Link>
+                <Link href="/teams" className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
+                  <Users className="h-3.5 w-3.5" /> All Teams
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Navigate — all tools as icon grid */}
+          <div>
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Quick Navigate</p>
+            <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-9">
+              {tools.map((tool) => (
+                <Link
+                  key={tool.href}
+                  href={tool.href}
+                  className={`group relative flex flex-col items-center gap-2 rounded-xl border ${tool.border} ${tool.bg} px-2 py-3 text-center transition-all hover:scale-[1.04] hover:shadow-lg hover:border-white/20`}
+                >
+                  {tool.badge && (
+                    <span className="absolute right-1.5 top-1.5 rounded-full bg-primary/80 px-1 py-px text-[8px] font-bold text-white leading-none">
+                      {tool.badge}
+                    </span>
+                  )}
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5">
+                    <tool.icon className={`h-[18px] w-[18px] ${tool.color}`} />
+                  </div>
+                  <span className="text-[10px] font-semibold leading-tight text-muted-foreground group-hover:text-white transition-colors">
+                    {tool.label}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
         </div>
       </section>
 

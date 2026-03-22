@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#09090b"/>
+      <stop offset="100%" style="stop-color:#0a0a0f"/>
+    </linearGradient>
+    <linearGradient id="orange3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#fb923c"/>
+    </linearGradient>
+    <linearGradient id="cardBg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1c1917"/>
+      <stop offset="100%" style="stop-color:#0f0f0f"/>
+    </linearGradient>
+    <linearGradient id="ballG3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#9a3412"/>
+    </linearGradient>
+    <filter id="cardS3">
+      <feDropShadow dx="0" dy="10" stdDeviation="20" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+    <filter id="glow3">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#bg3)"/>
+
+  <!-- Big glow blob center-right -->
+  <ellipse cx="750" cy="540" rx="360" ry="360" fill="#f97316" opacity="0.05"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1080" height="6" fill="url(#orange3)"/>
+
+  <!-- Left accent vertical line -->
+  <rect x="60" y="80" width="4" height="900" rx="2" fill="#f97316" opacity="0.3"/>
+
+  <!-- Eyebrow text -->
+  <text x="90" y="135" font-family="'Arial', sans-serif" font-size="22" font-weight="700" fill="#f97316" letter-spacing="5">FOR BUSINESSES &amp; CREATORS</text>
+
+  <!-- Main headline -->
+  <text x="90" y="240" font-family="'Arial Black', sans-serif" font-size="82" font-weight="900" fill="white" letter-spacing="-2">YOUR BRAND</text>
+  <text x="90" y="340" font-family="'Arial Black', sans-serif" font-size="82" font-weight="900" fill="white" letter-spacing="-2">ON EVERY</text>
+  <text x="90" y="440" font-family="'Arial Black', sans-serif" font-size="82" font-weight="900" fill="url(#orange3)" letter-spacing="-2" filter="url(#glow3)">CRICKET POST</text>
+
+  <!-- Underline accent -->
+  <rect x="90" y="460" width="600" height="4" rx="2" fill="url(#orange3)" opacity="0.7"/>
+
+  <!-- Sub description -->
+  <text x="90" y="520" font-family="'Arial', sans-serif" font-size="28" fill="#a1a1aa">Add your business details once —</text>
+  <text x="90" y="560" font-family="'Arial', sans-serif" font-size="28" fill="#a1a1aa">they appear on every poster automatically.</text>
+
+  <!-- ── Mock Poster Preview Card ── -->
+  <rect x="90" y="600" width="560" height="370" rx="20" fill="url(#cardBg3)" filter="url(#cardS3)" stroke="#f97316" stroke-width="2" stroke-opacity="0.5"/>
+
+  <!-- Mock poster header -->
+  <rect x="90" y="600" width="560" height="60" rx="10" fill="#f97316" opacity="0.9"/>
+  <text x="370" y="640" font-family="'Arial Black', sans-serif" font-size="24" font-weight="900" fill="white" text-anchor="middle">⚡ IPL 2026 MATCH POSTER</text>
+
+  <!-- Teams row -->
+  <rect x="110" y="675" width="520" height="130" rx="10" fill="#1e1e1e"/>
+  <text x="220" y="755" font-family="'Arial Black', sans-serif" font-size="42" font-weight="900" fill="#0ea5e9" text-anchor="middle">MI</text>
+  <text x="370" y="755" font-family="'Arial', sans-serif" font-size="26" fill="#71717a" text-anchor="middle">VS</text>
+  <text x="520" y="755" font-family="'Arial Black', sans-serif" font-size="42" font-weight="900" fill="#dc2626" text-anchor="middle">RCB</text>
+  <text x="220" y="790" font-family="'Arial', sans-serif" font-size="18" fill="#64748b" text-anchor="middle">Mumbai Indians</text>
+  <text x="520" y="790" font-family="'Arial', sans-serif" font-size="18" fill="#64748b" text-anchor="middle">Royal Challengers</text>
+
+  <!-- Business watermark section -->
+  <rect x="110" y="818" width="520" height="2" rx="1" fill="#f97316" opacity="0.3"/>
+  <rect x="110" y="828" width="520" height="120" rx="10" fill="#0f0f0f"/>
+
+  <!-- Business logo placeholder -->
+  <rect x="130" y="848" width="60" height="60" rx="10" fill="#f97316" opacity="0.2" stroke="#f97316" stroke-width="1.5"/>
+  <text x="160" y="885" font-size="28" text-anchor="middle">🏢</text>
+
+  <!-- Business details -->
+  <text x="210" y="865" font-family="'Arial Black', sans-serif" font-size="20" font-weight="700" fill="white">Your Business Name</text>
+  <text x="210" y="890" font-family="'Arial', sans-serif" font-size="17" fill="#71717a">📞 +91 98765 43210</text>
+  <text x="210" y="912" font-family="'Arial', sans-serif" font-size="17" fill="#71717a">🌐 yourbusiness.com</text>
+
+  <!-- "Auto-branded" badge -->
+  <rect x="430" y="845" width="180" height="36" rx="18" fill="#f97316"/>
+  <text x="520" y="869" font-family="'Arial Black', sans-serif" font-size="16" font-weight="700" fill="white" text-anchor="middle">✓ Auto-Branded</text>
+
+  <!-- Floating features on the right -->
+  <!-- Feature 1 -->
+  <rect x="700" y="300" width="310" height="100" rx="16" fill="#18181b" stroke="#f97316" stroke-width="1.5" stroke-opacity="0.5"/>
+  <text x="740" y="342" font-size="36">🏷️</text>
+  <text x="790" y="338" font-family="'Arial Black', sans-serif" font-size="22" font-weight="700" fill="white">Brand Name</text>
+  <text x="790" y="368" font-family="'Arial', sans-serif" font-size="18" fill="#71717a">on every poster</text>
+
+  <!-- Feature 2 -->
+  <rect x="700" y="420" width="310" height="100" rx="16" fill="#18181b" stroke="#f97316" stroke-width="1.5" stroke-opacity="0.5"/>
+  <text x="740" y="462" font-size="36">📞</text>
+  <text x="790" y="458" font-family="'Arial Black', sans-serif" font-size="22" font-weight="700" fill="white">Phone &amp; Web</text>
+  <text x="790" y="488" font-family="'Arial', sans-serif" font-size="18" fill="#71717a">reach your customers</text>
+
+  <!-- Feature 3 -->
+  <rect x="700" y="540" width="310" height="100" rx="16" fill="#18181b" stroke="#f97316" stroke-width="1.5" stroke-opacity="0.5"/>
+  <text x="740" y="582" font-size="36">📱</text>
+  <text x="790" y="578" font-family="'Arial Black', sans-serif" font-size="22" font-weight="700" fill="white">Social Handles</text>
+  <text x="790" y="608" font-family="'Arial', sans-serif" font-size="18" fill="#71717a">IG • FB • X (Twitter)</text>
+
+  <!-- Feature 4 -->
+  <rect x="700" y="660" width="310" height="100" rx="16" fill="#18181b" stroke="#f97316" stroke-width="1.5" stroke-opacity="0.5"/>
+  <text x="740" y="702" font-size="36">🖼️</text>
+  <text x="790" y="698" font-family="'Arial Black', sans-serif" font-size="22" font-weight="700" fill="white">Logo Upload</text>
+  <text x="790" y="728" font-family="'Arial', sans-serif" font-size="18" fill="#71717a">your logo on posts</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="1000" width="1080" height="80" fill="#18181b"/>
+  <rect x="0" y="1000" width="1080" height="3" fill="url(#orange3)"/>
+
+  <circle cx="70" cy="1040" r="28" fill="url(#ballG3)"/>
+  <path d="M 42 1040 Q 56 1033 70 1040 Q 84 1047 98 1040" fill="none" stroke="#7c2d12" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 50 1020 Q 70 1028 90 1020" fill="none" stroke="#7c2d12" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M 50 1060 Q 70 1052 90 1060" fill="none" stroke="#7c2d12" stroke-width="1.8" stroke-linecap="round"/>
+
+  <text x="116" y="1052" font-family="'Arial Black', sans-serif" font-size="30" font-weight="900" fill="white">CricPost</text>
+  <text x="290" y="1052" font-family="'Arial Black', sans-serif" font-size="30" font-weight="900" fill="#f97316">.in</text>
+  <text x="880" y="1052" font-family="'Arial Black', sans-serif" font-size="24" font-weight="700" fill="#f97316" text-anchor="middle">FREE FOREVER</text>
+
+  <rect x="0" y="1074" width="1080" height="6" fill="url(#orange3)"/>
+</svg>

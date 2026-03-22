@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#09090b"/>
+      <stop offset="100%" style="stop-color:#0f0f14"/>
+    </linearGradient>
+    <linearGradient id="orange2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1c1917"/>
+      <stop offset="100%" style="stop-color:#0c0a09"/>
+    </linearGradient>
+    <filter id="cardShadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="iconGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="ballG2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#9a3412"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#bg2)"/>
+
+  <!-- Subtle glow top center -->
+  <ellipse cx="540" cy="160" rx="400" ry="200" fill="#f97316" opacity="0.06"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1080" height="6" fill="url(#orange2)"/>
+
+  <!-- Header Section -->
+  <text x="540" y="100" font-family="'Arial Black', sans-serif" font-size="20" font-weight="700" fill="#f97316" text-anchor="middle" letter-spacing="5">EVERYTHING YOU NEED</text>
+
+  <text x="540" y="180" font-family="'Arial Black', sans-serif" font-size="68" font-weight="900" fill="white" text-anchor="middle" letter-spacing="-1">4 Powerful Tools</text>
+  <text x="540" y="250" font-family="'Arial Black', sans-serif" font-size="68" font-weight="900" fill="#f97316" text-anchor="middle" letter-spacing="-1">One Platform</text>
+
+  <!-- Divider -->
+  <rect x="440" y="272" width="200" height="3" rx="2" fill="#f97316" opacity="0.5"/>
+
+  <!-- ── CARD 1: Player Cards ── -->
+  <rect x="60" y="310" width="460" height="320" rx="20" fill="url(#cardGrad1)" filter="url(#cardShadow)" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.4"/>
+  <!-- Card accent top -->
+  <rect x="60" y="310" width="460" height="5" rx="2" fill="#3b82f6"/>
+  <!-- Icon circle -->
+  <circle cx="140" cy="410" r="52" fill="#3b82f6" opacity="0.15"/>
+  <circle cx="140" cy="410" r="40" fill="#1d4ed8" opacity="0.5"/>
+  <!-- Person icon -->
+  <circle cx="140" cy="396" r="16" fill="#93c5fd"/>
+  <path d="M 108 456 Q 108 428 140 428 Q 172 428 172 456" fill="#93c5fd" opacity="0.7"/>
+  <!-- Card content -->
+  <text x="210" y="390" font-family="'Arial Black', sans-serif" font-size="36" font-weight="900" fill="white">Player Cards</text>
+  <text x="210" y="425" font-family="'Arial', sans-serif" font-size="22" fill="#94a3b8">Create stunning player</text>
+  <text x="210" y="455" font-family="'Arial', sans-serif" font-size="22" fill="#94a3b8">profile cards with stats</text>
+  <!-- Stars -->
+  <text x="210" y="500" font-size="28">⭐⭐⭐⭐⭐</text>
+  <text x="350" y="500" font-family="'Arial', sans-serif" font-size="20" fill="#64748b">150+ players</text>
+
+  <!-- ── CARD 2: Match Posters ── -->
+  <rect x="560" y="310" width="460" height="320" rx="20" fill="url(#cardGrad2)" filter="url(#cardShadow)" stroke="#f97316" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="560" y="310" width="460" height="5" rx="2" fill="#f97316"/>
+  <!-- Trophy icon -->
+  <circle cx="640" cy="410" r="52" fill="#f97316" opacity="0.12"/>
+  <circle cx="640" cy="410" r="40" fill="#c2410c" opacity="0.5"/>
+  <text x="640" y="428" font-size="42" text-anchor="middle">🏆</text>
+  <!-- Card content -->
+  <text x="710" y="390" font-family="'Arial Black', sans-serif" font-size="36" font-weight="900" fill="white">Match Posters</text>
+  <text x="710" y="425" font-family="'Arial', sans-serif" font-size="22" fill="#94a3b8">Share match posters</text>
+  <text x="710" y="455" font-family="'Arial', sans-serif" font-size="22" fill="#94a3b8">with your predictions</text>
+  <text x="710" y="500" font-family="'Arial', sans-serif" font-size="20" fill="#64748b">70+ matches • All teams</text>
+
+  <!-- ── CARD 3: Memes ── -->
+  <rect x="60" y="660" width="460" height="320" rx="20" fill="#110d0b" filter="url(#cardShadow)" stroke="#ec4899" stroke-width="1.5" stroke-opacity="0.4"/>
+  <rect x="60" y="660" width="460" height="5" rx="2" fill="#ec4899"/>
+  <circle cx="140" cy="760" r="52" fill="#ec4899" opacity="0.12"/>
+  <circle cx="140" cy="760" r="40" fill="#9d174d" opacity="0.5"/>
+  <text x="140" y="778" font-size="42" text-anchor="middle">😂</text>
+  <text x="210" y="740" font-family="'Arial Black', sans-serif" font-size="36" font-weight="900" fill="white">Memes &amp; Posts</text>
+  <text x="210" y="775" font-family="'Arial', sans-serif" font-size="22" fill="#94a3b8">100+ ready-made cricket</text>
+  <text x="210" y="805" font-family="'Arial', sans-serif" font-size="22" fill="#94a3b8">memes in 3 languages</text>
+  <text x="210" y="850" font-family="'Arial', sans-serif" font-size="20" fill="#64748b">EN • HI • GU</text>
+
+  <!-- ── CARD 4: Fan Support ── -->
+  <rect x="560" y="660" width="460" height="320" rx="20" fill="#120a0f" filter="url(#cardShadow)" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.4"/>
+  <rect x="560" y="660" width="460" height="5" rx="2" fill="#a855f7"/>
+  <circle cx="640" cy="760" r="52" fill="#a855f7" opacity="0.12"/>
+  <circle cx="640" cy="760" r="40" fill="#6b21a8" opacity="0.5"/>
+  <text x="640" y="778" font-size="42" text-anchor="middle">❤️</text>
+  <text x="710" y="740" font-family="'Arial Black', sans-serif" font-size="36" font-weight="900" fill="white">Fan Support</text>
+  <text x="710" y="775" font-family="'Arial', sans-serif" font-size="22" fill="#94a3b8">Custom fan posters</text>
+  <text x="710" y="805" font-family="'Arial', sans-serif" font-size="22" fill="#94a3b8">with your brand &amp; logo</text>
+  <text x="710" y="850" font-family="'Arial', sans-serif" font-size="20" fill="#64748b">10 IPL teams</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="1000" width="1080" height="80" fill="#18181b"/>
+  <rect x="0" y="1000" width="1080" height="3" fill="url(#orange2)"/>
+  <!-- Ball -->
+  <circle cx="70" cy="1040" r="28" fill="url(#ballG2)"/>
+  <path d="M 42 1040 Q 56 1033 70 1040 Q 84 1047 98 1040" fill="none" stroke="#7c2d12" stroke-width="2.5" stroke-linecap="round"/>
+  <path x="42" y="1040" d="M 50 1020 Q 70 1028 90 1020" fill="none" stroke="#7c2d12" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M 50 1060 Q 70 1052 90 1060" fill="none" stroke="#7c2d12" stroke-width="1.8" stroke-linecap="round"/>
+
+  <text x="116" y="1052" font-family="'Arial Black', sans-serif" font-size="30" font-weight="900" fill="white">CricPost</text>
+  <text x="290" y="1052" font-family="'Arial Black', sans-serif" font-size="30" font-weight="900" fill="#f97316">.in</text>
+  <text x="348" y="1052" font-family="'Arial', sans-serif" font-size="20" fill="#71717a"> — Free Cricket Content Creator</text>
+
+  <rect x="0" y="1074" width="1080" height="6" fill="url(#orange2)"/>
+</svg>

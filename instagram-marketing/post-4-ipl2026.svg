@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#09090b"/>
+      <stop offset="50%" style="stop-color:#0c090e"/>
+      <stop offset="100%" style="stop-color:#09090b"/>
+    </linearGradient>
+    <linearGradient id="orange4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#fb923c"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="50%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="ballG4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#9a3412"/>
+    </linearGradient>
+    <radialGradient id="stadiumGlow" cx="50%" cy="100%" r="70%">
+      <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="bigGlow4">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="goldGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="dropS4">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#f97316" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#bg4)"/>
+
+  <!-- Stadium glow from bottom -->
+  <rect width="1080" height="1080" fill="url(#stadiumGlow)"/>
+
+  <!-- Grid dots (subtle) -->
+  <g fill="#ffffff" opacity="0.03">
+    <circle cx="108" cy="108" r="2"/><circle cx="216" cy="108" r="2"/><circle cx="324" cy="108" r="2"/>
+    <circle cx="432" cy="108" r="2"/><circle cx="540" cy="108" r="2"/><circle cx="648" cy="108" r="2"/>
+    <circle cx="756" cy="108" r="2"/><circle cx="864" cy="108" r="2"/><circle cx="972" cy="108" r="2"/>
+    <circle cx="108" cy="216" r="2"/><circle cx="216" cy="216" r="2"/><circle cx="324" cy="216" r="2"/>
+    <circle cx="432" cy="216" r="2"/><circle cx="540" cy="216" r="2"/><circle cx="648" cy="216" r="2"/>
+    <circle cx="756" cy="216" r="2"/><circle cx="864" cy="216" r="2"/><circle cx="972" cy="216" r="2"/>
+    <circle cx="108" cy="324" r="2"/><circle cx="216" cy="324" r="2"/><circle cx="324" cy="324" r="2"/>
+    <circle cx="432" cy="324" r="2"/><circle cx="540" cy="324" r="2"/><circle cx="648" cy="324" r="2"/>
+    <circle cx="756" cy="324" r="2"/><circle cx="864" cy="324" r="2"/><circle cx="972" cy="324" r="2"/>
+  </g>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1080" height="6" fill="url(#orange4)"/>
+
+  <!-- Decorative large cricket ball bg -->
+  <circle cx="540" cy="460" r="350" fill="#f97316" opacity="0.04"/>
+  <circle cx="540" cy="460" r="260" fill="#f97316" opacity="0.04"/>
+
+  <!-- Season badge top center -->
+  <rect x="340" y="35" width="400" height="56" rx="28" fill="#f97316" opacity="0.15" stroke="#f97316" stroke-width="2"/>
+  <text x="540" y="72" font-family="'Arial Black', sans-serif" font-size="24" font-weight="900" fill="#f97316" text-anchor="middle" letter-spacing="3">🏏 IPL 2026 SEASON</text>
+
+  <!-- Eyebrow -->
+  <text x="540" y="170" font-family="'Arial', sans-serif" font-size="22" fill="#71717a" text-anchor="middle" letter-spacing="5">THE SEASON IS HERE</text>
+
+  <!-- Main headline -->
+  <text x="540" y="290" font-family="'Arial Black', sans-serif" font-size="100" font-weight="900" fill="white" text-anchor="middle" letter-spacing="-3" filter="url(#dropS4)">CREATE</text>
+
+  <!-- Trophy icon center -->
+  <text x="540" y="420" font-size="100" text-anchor="middle" filter="url(#goldGlow)">🏆</text>
+
+  <text x="540" y="530" font-family="'Arial Black', sans-serif" font-size="72" font-weight="900" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="-2" filter="url(#goldGlow)">MATCH POSTERS</text>
+  <text x="540" y="615" font-family="'Arial Black', sans-serif" font-size="72" font-weight="900" fill="white" text-anchor="middle" letter-spacing="-2">FOR EVERY GAME</text>
+
+  <!-- Divider with dots -->
+  <rect x="240" y="640" width="200" height="3" rx="2" fill="#f97316" opacity="0.5"/>
+  <circle cx="540" cy="641" r="6" fill="#f97316"/>
+  <rect x="640" y="640" width="200" height="3" rx="2" fill="#f97316" opacity="0.5"/>
+
+  <!-- Team logos row (text-based) -->
+  <text x="540" y="696" font-family="'Arial', sans-serif" font-size="22" fill="#52525b" text-anchor="middle" letter-spacing="2">ALL 10 IPL TEAMS INCLUDED</text>
+
+  <!-- Team abbreviations -->
+  <g font-family="'Arial Black', sans-serif" font-size="22" font-weight="900" text-anchor="middle">
+    <text x="88" y="760" fill="#0ea5e9">MI</text>
+    <text x="196" y="760" fill="#dc2626">RCB</text>
+    <text x="304" y="760" fill="#fbbf24">CSK</text>
+    <text x="412" y="760" fill="#7c3aed">KKR</text>
+    <text x="520" y="760" fill="#f97316">SRH</text>
+    <text x="628" y="760" fill="#ec4899">PBKS</text>
+    <text x="736" y="760" fill="#10b981">RR</text>
+    <text x="844" y="760" fill="#06b6d4">DC</text>
+    <text x="952" y="760" fill="#a855f7">LSG</text>
+  </g>
+
+  <!-- Team separator lines -->
+  <g stroke="#27272a" stroke-width="1">
+    <line x1="142" y1="742" x2="142" y2="772"/>
+    <line x1="250" y1="742" x2="250" y2="772"/>
+    <line x1="358" y1="742" x2="358" y2="772"/>
+    <line x1="466" y1="742" x2="466" y2="772"/>
+    <line x1="574" y1="742" x2="574" y2="772"/>
+    <line x1="682" y1="742" x2="682" y2="772"/>
+    <line x1="790" y1="742" x2="790" y2="772"/>
+    <line x1="898" y1="742" x2="898" y2="772"/>
+  </g>
+
+  <!-- Stats row -->
+  <rect x="60" y="800" width="280" height="140" rx="16" fill="#18181b" stroke="#f97316" stroke-width="1.5" stroke-opacity="0.4"/>
+  <text x="200" y="862" font-family="'Arial Black', sans-serif" font-size="52" font-weight="900" fill="#f97316" text-anchor="middle">74</text>
+  <text x="200" y="900" font-family="'Arial', sans-serif" font-size="22" fill="#a1a1aa" text-anchor="middle">Total Matches</text>
+  <text x="200" y="928" font-family="'Arial', sans-serif" font-size="18" fill="#52525b" text-anchor="middle">IPL 2026</text>
+
+  <rect x="400" y="800" width="280" height="140" rx="16" fill="#18181b" stroke="#f97316" stroke-width="1.5" stroke-opacity="0.4"/>
+  <text x="540" y="862" font-family="'Arial Black', sans-serif" font-size="52" font-weight="900" fill="#f97316" text-anchor="middle">150+</text>
+  <text x="540" y="900" font-family="'Arial', sans-serif" font-size="22" fill="#a1a1aa" text-anchor="middle">Players</text>
+  <text x="540" y="928" font-family="'Arial', sans-serif" font-size="18" fill="#52525b" text-anchor="middle">All IPL squads</text>
+
+  <rect x="740" y="800" width="280" height="140" rx="16" fill="#18181b" stroke="#f97316" stroke-width="1.5" stroke-opacity="0.4"/>
+  <text x="880" y="862" font-family="'Arial Black', sans-serif" font-size="52" font-weight="900" fill="#f97316" text-anchor="middle">FREE</text>
+  <text x="880" y="900" font-family="'Arial', sans-serif" font-size="22" fill="#a1a1aa" text-anchor="middle">No Sign-up</text>
+  <text x="880" y="928" font-family="'Arial', sans-serif" font-size="18" fill="#52525b" text-anchor="middle">needed</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="1000" width="1080" height="80" fill="#18181b"/>
+  <rect x="0" y="1000" width="1080" height="3" fill="url(#orange4)"/>
+
+  <circle cx="70" cy="1040" r="28" fill="url(#ballG4)"/>
+  <path d="M 42 1040 Q 56 1033 70 1040 Q 84 1047 98 1040" fill="none" stroke="#7c2d12" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 50 1020 Q 70 1028 90 1020" fill="none" stroke="#7c2d12" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M 50 1060 Q 70 1052 90 1060" fill="none" stroke="#7c2d12" stroke-width="1.8" stroke-linecap="round"/>
+
+  <text x="116" y="1052" font-family="'Arial Black', sans-serif" font-size="30" font-weight="900" fill="white">CricPost</text>
+  <text x="290" y="1052" font-family="'Arial Black', sans-serif" font-size="30" font-weight="900" fill="#f97316">.in</text>
+  <text x="540" y="1052" font-family="'Arial', sans-serif" font-size="20" fill="#71717a" text-anchor="middle">Make Your Cricket Posts Go Viral</text>
+
+  <rect x="0" y="1074" width="1080" height="6" fill="url(#orange4)"/>
+</svg>

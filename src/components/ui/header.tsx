@@ -6,7 +6,7 @@ import {
   Menu, X, Zap, Building2, Phone, Globe,
   Instagram, Facebook, Twitter, Save, Check, ChevronDown,
   Users, ImageIcon, Sparkles, HelpCircle, BookOpen,
-  LogIn, LogOut,
+  LogIn, LogOut, Home, Calendar, Trophy, Heart,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useBusinessDetails } from "@/hooks/use-business-details";
@@ -68,17 +68,18 @@ function LanguageSwitcher() {
   );
 }
 
-const primaryLinkDefs: { href: string; labelKey: TranslationKey }[] = [
-  { href: "/", labelKey: "home" },
-  { href: "/players", labelKey: "playerCards" },
-  { href: "/schedule", labelKey: "schedule" },
-  { href: "/match-card", labelKey: "matchCard" },
-  { href: "/own-poster", labelKey: "fanSupport" },
+const primaryLinkDefs: { href: string; labelKey: TranslationKey; icon: React.ElementType }[] = [
+  { href: "/", labelKey: "home", icon: Home },
+  { href: "/players", labelKey: "playerCards", icon: Users },
+  { href: "/schedule", labelKey: "schedule", icon: Calendar },
+  { href: "/match-card", labelKey: "matchCard", icon: Trophy },
+  { href: "/own-poster", labelKey: "fanSupport", icon: Heart },
 ];
 
 const moreLinkDefs: { href: string; labelKey: TranslationKey; icon: React.ElementType }[] = [
   { href: "/teams", labelKey: "teams", icon: Users },
   { href: "/memes", labelKey: "memesAndPosts", icon: Sparkles },
+  { href: "/instagram", labelKey: "toolInstagram", icon: Instagram },
   { href: "/poster", labelKey: "createPoster", icon: ImageIcon },
   { href: "/quiz", labelKey: "cricketQuiz", icon: HelpCircle },
   { href: "/help", labelKey: "helpAndGuide", icon: BookOpen },
@@ -588,16 +589,35 @@ export function Header() {
             ))}
           </div>
 
-          {[...primaryLinkDefs, ...moreLinkDefs].map(({ href, labelKey }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setMobileOpen(false)}
-              className="rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-secondary"
-            >
-              {t(labelKey) as string}
-            </Link>
-          ))}
+          {/* Primary links grid */}
+          <div className="grid grid-cols-2 gap-2 pb-2">
+            {primaryLinkDefs.map(({ href, labelKey, icon: Icon }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2.5 rounded-xl border border-white/8 bg-white/[0.04] px-3 py-3 text-sm font-medium text-muted-foreground transition-colors active:bg-white/10 hover:text-foreground hover:bg-white/8"
+              >
+                <Icon className="h-4 w-4 flex-shrink-0 text-primary" />
+                <span className="leading-tight">{t(labelKey) as string}</span>
+              </Link>
+            ))}
+          </div>
+
+          {/* More links grid */}
+          <div className="grid grid-cols-2 gap-2 border-t border-white/8 pt-2">
+            {moreLinkDefs.map(({ href, labelKey, icon: Icon }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2.5 rounded-xl border border-white/8 bg-white/[0.04] px-3 py-3 text-sm font-medium text-muted-foreground transition-colors active:bg-white/10 hover:text-foreground hover:bg-white/8"
+              >
+                <Icon className="h-4 w-4 flex-shrink-0 text-primary" />
+                <span className="leading-tight">{t(labelKey) as string}</span>
+              </Link>
+            ))}
+          </div>
 
           {/* Mobile business details toggle */}
           <button

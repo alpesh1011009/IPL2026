@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#09090b"/>
+      <stop offset="50%" style="stop-color:#0f0f12"/>
+      <stop offset="100%" style="stop-color:#09090b"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <linearGradient id="heroTextGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#fdba74"/>
+    </linearGradient>
+    <linearGradient id="ballGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#9a3412"/>
+    </linearGradient>
+    <radialGradient id="glowCenter" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#f97316" flood-opacity="0.4"/>
+    </filter>
+    <filter id="textShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+
+  <!-- Glow center -->
+  <rect width="1080" height="1080" fill="url(#glowCenter)"/>
+
+  <!-- Decorative grid lines (subtle) -->
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="216" x2="1080" y2="216"/>
+    <line x1="0" y1="432" x2="1080" y2="432"/>
+    <line x1="0" y1="648" x2="1080" y2="648"/>
+    <line x1="0" y1="864" x2="1080" y2="864"/>
+    <line x1="216" y1="0" x2="216" y2="1080"/>
+    <line x1="432" y1="0" x2="432" y2="1080"/>
+    <line x1="648" y1="0" x2="648" y2="1080"/>
+    <line x1="864" y1="0" x2="864" y2="1080"/>
+  </g>
+
+  <!-- Top orange accent bar -->
+  <rect x="0" y="0" width="1080" height="6" fill="url(#orangeGrad)"/>
+
+  <!-- Big decorative cricket ball - top right -->
+  <circle cx="900" cy="200" r="180" fill="url(#ballGrad)" opacity="0.12"/>
+  <circle cx="900" cy="200" r="130" fill="url(#ballGrad)" opacity="0.18"/>
+
+  <!-- Big decorative cricket ball - bottom left -->
+  <circle cx="150" cy="900" r="140" fill="url(#ballGrad)" opacity="0.1"/>
+
+  <!-- Main foreground cricket ball -->
+  <circle cx="820" cy="380" r="160" fill="url(#ballGrad)" opacity="0.9" filter="url(#shadow)"/>
+  <!-- Ball seams -->
+  <path d="M 660 380 Q 720 340 820 380 Q 920 420 980 380" fill="none" stroke="#7c2d12" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 700 250 Q 820 310 940 250" fill="none" stroke="#7c2d12" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 700 510 Q 820 450 940 510" fill="none" stroke="#7c2d12" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Ball highlight -->
+  <ellipse cx="760" cy="310" rx="35" ry="22" fill="white" opacity="0.2" transform="rotate(-20, 760, 310)"/>
+
+  <!-- Wickets illustration (left side) -->
+  <g opacity="0.15">
+    <rect x="100" y="600" width="18" height="200" rx="4" fill="#f97316"/>
+    <rect x="140" y="580" width="18" height="220" rx="4" fill="#f97316"/>
+    <rect x="180" y="600" width="18" height="200" rx="4" fill="#f97316"/>
+    <rect x="90" y="595" width="120" height="16" rx="4" fill="#fb923c"/>
+    <rect x="90" y="570" width="120" height="16" rx="4" fill="#fb923c"/>
+  </g>
+
+  <!-- Orange accent bracket left -->
+  <rect x="80" y="280" width="6" height="180" rx="3" fill="#f97316"/>
+  <rect x="80" y="280" width="40" height="6" rx="3" fill="#f97316"/>
+  <rect x="80" y="454" width="40" height="6" rx="3" fill="#f97316"/>
+
+  <!-- Main headline -->
+  <text x="120" y="360" font-family="'Arial Black', 'Impact', sans-serif" font-size="96" font-weight="900" fill="url(#heroTextGrad)" filter="url(#textShadow)" letter-spacing="-2">MAKE YOUR</text>
+  <text x="120" y="470" font-family="'Arial Black', 'Impact', sans-serif" font-size="96" font-weight="900" fill="#f97316" filter="url(#shadow)" letter-spacing="-2">CRICKET</text>
+  <text x="120" y="580" font-family="'Arial Black', 'Impact', sans-serif" font-size="86" font-weight="900" fill="url(#heroTextGrad)" filter="url(#textShadow)" letter-spacing="-2">POSTS VIRAL</text>
+
+  <!-- Subtitle divider -->
+  <rect x="120" y="610" width="500" height="3" rx="2" fill="#f97316" opacity="0.6"/>
+
+  <!-- Feature pills -->
+  <g font-family="'Arial', sans-serif" font-size="26" font-weight="700">
+    <!-- Pill 1 -->
+    <rect x="120" y="636" width="220" height="52" rx="26" fill="#f97316" opacity="0.15" stroke="#f97316" stroke-width="1.5"/>
+    <text x="230" y="668" fill="#fb923c" text-anchor="middle">🏏 Player Cards</text>
+    <!-- Pill 2 -->
+    <rect x="358" y="636" width="240" height="52" rx="26" fill="#f97316" opacity="0.15" stroke="#f97316" stroke-width="1.5"/>
+    <text x="478" y="668" fill="#fb923c" text-anchor="middle">📋 Match Posters</text>
+    <!-- Pill 3 -->
+    <rect x="120" y="702" width="175" height="52" rx="26" fill="#f97316" opacity="0.15" stroke="#f97316" stroke-width="1.5"/>
+    <text x="207" y="734" fill="#fb923c" text-anchor="middle">😂 Memes</text>
+    <!-- Pill 4 -->
+    <rect x="313" y="702" width="210" height="52" rx="26" fill="#f97316" opacity="0.15" stroke="#f97316" stroke-width="1.5"/>
+    <text x="418" y="734" fill="#fb923c" text-anchor="middle">❤️ Fan Support</text>
+  </g>
+
+  <!-- FREE badge -->
+  <rect x="750" y="640" width="240" height="120" rx="16" fill="#f97316"/>
+  <text x="870" y="695" font-family="'Arial Black', sans-serif" font-size="44" font-weight="900" fill="white" text-anchor="middle" filter="url(#textShadow)">100%</text>
+  <text x="870" y="742" font-family="'Arial Black', sans-serif" font-size="32" font-weight="900" fill="white" text-anchor="middle">FREE</text>
+
+  <!-- Bottom section -->
+  <rect x="0" y="870" width="1080" height="210" fill="#18181b" opacity="0.95"/>
+  <rect x="0" y="870" width="1080" height="3" fill="url(#orangeGrad)"/>
+
+  <!-- Cricket ball small logo -->
+  <circle cx="90" cy="965" r="42" fill="url(#ballGrad)"/>
+  <path d="M 48 965 Q 68 953 90 965 Q 112 977 132 965" fill="none" stroke="#7c2d12" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 60 935 Q 90 948 120 935" fill="none" stroke="#7c2d12" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 60 995 Q 90 982 120 995" fill="none" stroke="#7c2d12" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Website name large -->
+  <text x="154" y="946" font-family="'Arial Black', sans-serif" font-size="52" font-weight="900" fill="white">CricPost</text>
+  <text x="490" y="946" font-family="'Arial Black', sans-serif" font-size="52" font-weight="900" fill="#f97316">.in</text>
+  <text x="154" y="995" font-family="'Arial', sans-serif" font-size="24" fill="#71717a" letter-spacing="3">CRICKET POSTERS &amp; MEMES PLATFORM</text>
+
+  <!-- Arrow CTA -->
+  <rect x="820" y="920" width="190" height="60" rx="30" fill="url(#orangeGrad)"/>
+  <text x="915" y="957" font-family="'Arial Black', sans-serif" font-size="22" font-weight="900" fill="white" text-anchor="middle">VISIT NOW →</text>
+
+  <!-- Bottom accent bar -->
+  <rect x="0" y="1074" width="1080" height="6" fill="url(#orangeGrad)"/>
+
+  <!-- Floating stars decoration -->
+  <g fill="#f97316" opacity="0.6">
+    <polygon points="540,80 548,104 574,104 553,118 561,142 540,128 519,142 527,118 506,104 532,104" transform="scale(0.7) translate(321,50)"/>
+    <polygon points="540,80 548,104 574,104 553,118 561,142 540,128 519,142 527,118 506,104 532,104" transform="scale(0.4) translate(1050,150) rotate(20,540,112)"/>
+    <polygon points="540,80 548,104 574,104 553,118 561,142 540,128 519,142 527,118 506,104 532,104" transform="scale(0.5) translate(700,300) rotate(-15,540,112)"/>
+  </g>
+</svg>
