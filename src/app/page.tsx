@@ -170,7 +170,7 @@ export default function HomePage() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
                 </span>
-                TATA IPL 2025 &bull; Season Live
+                TATA IPL 2026 &bull; Season Live
               </div>
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
                 {t("heroH1a")}{" "}
@@ -264,11 +264,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── IPL 2025 Highlight + Quick Navigate ───────────── */}
+      {/* ── IPL 2026 Highlight + Quick Navigate ───────────── */}
       <section className="border-t border-white/5">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
 
-          {/* IPL 2025 Featured Banner */}
+          {/* IPL 2026 Featured Banner */}
           <div className="relative overflow-hidden rounded-2xl border border-primary/40 bg-gradient-to-r from-primary/20 via-primary/8 to-transparent p-4 sm:p-5 mb-6">
             <div className="absolute -left-10 -top-10 h-48 w-48 rounded-full bg-primary/20 blur-3xl pointer-events-none" />
             <div className="absolute right-0 bottom-0 h-32 w-32 rounded-full bg-primary/10 blur-2xl pointer-events-none" />
@@ -280,7 +280,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-xl font-black tracking-tight text-white">TATA IPL 2025</span>
+                    <span className="text-xl font-black tracking-tight text-white">TATA IPL 2026</span>
                     <span className="inline-flex items-center gap-1 rounded-full border border-red-500/40 bg-red-500/15 px-2 py-0.5 text-[10px] font-bold text-red-400">
                       <span className="relative flex h-1.5 w-1.5">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
@@ -290,7 +290,7 @@ export default function HomePage() {
                     </span>
                   </div>
                   <p className="mt-0.5 text-xs text-muted-foreground">
-                    Mar 22 – Jun 1, 2025 &bull; 10 Teams &bull; 74 Matches &bull; India&apos;s Biggest Cricket League
+                    Mar 22 – Jun 1, 2026 &bull; 10 Teams &bull; 74 Matches &bull; India&apos;s Biggest Cricket League
                   </p>
                 </div>
               </div>

@@ -72,10 +72,10 @@ const QUESTIONS: Question[] = [
     fact: "Chepauk — as fans call it — has been CSK's home since IPL's inaugural edition in 2008.",
   },
   {
-    q: "Which of these teams has NEVER won an IPL title?",
-    options: ["Rajasthan Royals", "Royal Challengers Bengaluru", "Kolkata Knight Riders", "Sunrisers Hyderabad"],
+    q: "Which team won their maiden IPL title in 2025?",
+    options: ["Delhi Capitals", "Royal Challengers Bengaluru", "Punjab Kings", "Lucknow Super Giants"],
     answer: 1,
-    fact: "RCB has reached the final three times but is yet to win the IPL title.",
+    fact: "RCB won their first-ever IPL title in 2025, ending years of heartbreak for their passionate fans.",
   },
   {
     q: "Which team's primary color is purple and gold?",
