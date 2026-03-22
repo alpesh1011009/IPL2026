@@ -35,15 +35,15 @@ function PlayerRow({ player }: { player: Player }) {
   const imageUrl = getPlayerImage(player);
 
   return (
-    <div className="group flex items-center gap-3 rounded-xl px-3 py-2 transition-all hover:bg-white/[0.06]">
+    <div className="group flex items-center gap-3 rounded-xl px-3 py-2 transition-all duration-200 hover:bg-white/[0.06] hover:translate-x-0.5">
       {/* Player avatar */}
-      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-white/10 transition-all group-hover:ring-white/25">
+      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-white/10 transition-all duration-300 group-hover:ring-white/30 group-hover:scale-110">
         <Image
           src={imageUrl}
           alt={player.name}
           width={40}
           height={40}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover saturate-110 brightness-105"
           unoptimized
         />
         {player.isCaptain && (
@@ -86,7 +86,7 @@ export function TeamCard({ team }: { team: Team }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-card transition-all duration-500 hover:border-white/20 hover:shadow-2xl hover:shadow-black/50 hover:-translate-y-1">
+    <div className="group anim-fade-in-up relative overflow-hidden rounded-2xl border border-white/[0.08] bg-card transition-all duration-500 hover:border-white/20 hover:shadow-2xl hover:shadow-black/50 hover:-translate-y-1.5">
       {/* Gradient header */}
       <div className={cn("relative h-40 bg-gradient-to-br overflow-hidden", team.gradient)}>
         {/* Dot pattern */}
@@ -97,8 +97,8 @@ export function TeamCard({ team }: { team: Team }) {
           }}
         />
 
-        {/* Glow effect */}
-        <div className="absolute -bottom-12 left-1/2 h-24 w-3/4 -translate-x-1/2 rounded-full bg-white/20 blur-3xl" />
+        {/* Glow effect — brightens on hover */}
+        <div className="absolute -bottom-12 left-1/2 h-24 w-3/4 -translate-x-1/2 rounded-full bg-white/10 blur-3xl transition-all duration-700 group-hover:bg-white/30 group-hover:h-32 group-hover:w-full" />
 
         {/* Team short name watermark */}
         <div className="absolute -right-3 -top-6 text-[8rem] font-black leading-none text-white/[0.08] select-none tracking-tighter">

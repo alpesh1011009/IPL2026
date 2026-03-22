@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="180" height="180" rx="38" fill="url(#bg)"/>
+
+  <!-- C arc -->
+  <path d="M135 47 Q104 18 77 27 Q36 41 36 90 Q36 140 77 153 Q104 162 135 133"
+        stroke="white" stroke-width="20" fill="none" stroke-linecap="round"/>
+
+  <!-- Ball in C opening -->
+  <circle cx="140" cy="90" r="25" fill="white"/>
+
+  <!-- Ball seam left -->
+  <path d="M128 72 Q115 90 128 108"
+        stroke="rgba(234,88,12,0.45)" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- Ball seam right -->
+  <path d="M151 72 Q164 90 151 108"
+        stroke="rgba(234,88,12,0.30)" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

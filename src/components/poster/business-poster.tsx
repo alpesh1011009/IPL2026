@@ -322,7 +322,7 @@ export function BusinessPoster({ match }: { match: Match }) {
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex flex-col items-center gap-2">
                     {teamLogoUrls[match.team1] ? (
-                      <Image src={teamLogoUrls[match.team1]!} alt={match.team1} width={48} height={48} className="h-12 w-12 object-contain" unoptimized />
+                      <Image src={teamLogoUrls[match.team1]!} alt={match.team1} width={48} height={48} className="h-12 w-12 object-contain saturate-125 brightness-110 drop-shadow-lg logo-clip" unoptimized />
                     ) : (
                       <div className={cn("flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br", team1Gradient)}>
                         <span className="text-xs font-black text-white">{match.team1}</span>
@@ -336,7 +336,7 @@ export function BusinessPoster({ match }: { match: Match }) {
                   </div>
                   <div className="flex flex-col items-center gap-2">
                     {teamLogoUrls[match.team2] ? (
-                      <Image src={teamLogoUrls[match.team2]!} alt={match.team2} width={48} height={48} className="h-12 w-12 object-contain" unoptimized />
+                      <Image src={teamLogoUrls[match.team2]!} alt={match.team2} width={48} height={48} className="h-12 w-12 object-contain saturate-125 brightness-110 drop-shadow-lg logo-clip" unoptimized />
                     ) : (
                       <div className={cn("flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br", team2Gradient)}>
                         <span className="text-xs font-black text-white">{match.team2}</span>
@@ -404,7 +404,7 @@ export function BusinessPoster({ match }: { match: Match }) {
               <div className={cn("flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br p-0.5", team1Gradient)}>
                 <div className="flex h-full w-full items-center justify-center rounded-full bg-[#09090b]">
                   {teamLogoUrls[match.team1] ? (
-                    <Image src={teamLogoUrls[match.team1]!} alt={match.team1} width={48} height={48} className="h-12 w-12 object-contain" unoptimized />
+                    <Image src={teamLogoUrls[match.team1]!} alt={match.team1} width={48} height={48} className="h-12 w-12 object-contain saturate-125 brightness-110 drop-shadow-lg logo-clip" unoptimized />
                   ) : (
                     <span className="text-lg font-black text-white">{match.team1}</span>
                   )}
@@ -422,7 +422,7 @@ export function BusinessPoster({ match }: { match: Match }) {
               <div className={cn("flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br p-0.5", team2Gradient)}>
                 <div className="flex h-full w-full items-center justify-center rounded-full bg-[#09090b]">
                   {teamLogoUrls[match.team2] ? (
-                    <Image src={teamLogoUrls[match.team2]!} alt={match.team2} width={48} height={48} className="h-12 w-12 object-contain" unoptimized />
+                    <Image src={teamLogoUrls[match.team2]!} alt={match.team2} width={48} height={48} className="h-12 w-12 object-contain saturate-125 brightness-110 drop-shadow-lg logo-clip" unoptimized />
                   ) : (
                     <span className="text-lg font-black text-white">{match.team2}</span>
                   )}
@@ -484,7 +484,7 @@ export function BusinessPoster({ match }: { match: Match }) {
 
           {/* Branding */}
           <div className="bg-[#09090b] px-4 py-1.5 text-center">
-            <p className="text-[8px] text-white/20">Made with CricPro</p>
+            <p className="text-[8px] text-white/20">Made with cricpost.in</p>
           </div>
         </div>
       </div>

@@ -140,7 +140,7 @@ function BrandingFooter({ primaryColor, secondaryColor }: { primaryColor: string
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${alpha(primaryColor, 0.05)} 0%, transparent 70%)`, pointerEvents: "none" }} />
         <div style={{ display: "flex", alignItems: "center", gap: 5, position: "relative" }}>
           <div style={{ width: 5, height: 5, background: primaryColor, transform: "rotate(45deg)", opacity: 0.7, borderRadius: 1 }} />
-          <span style={{ color: "rgba(255,255,255,0.22)", fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>CricPro</span>
+          <span style={{ color: "rgba(255,255,255,0.22)", fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>cricpost.in</span>
           <div style={{ width: 5, height: 5, background: secondaryColor, transform: "rotate(45deg)", opacity: 0.7, borderRadius: 1 }} />
         </div>
         <span style={{ color: "rgba(255,255,255,0.12)", fontSize: 7.5, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", position: "relative" }}>
@@ -260,7 +260,7 @@ function CardFace({ matchNumber, team1, team2, date, day, time, venue, userPhoto
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, flex: 1, position: "relative" }}>
           {logo1 ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={logo1} alt={team1} crossOrigin="anonymous" style={{ width: 64, height: 64, objectFit: "contain" }} />
+            <img src={logo1} alt={team1} crossOrigin="anonymous" style={{ width: 64, height: 64, objectFit: "contain", filter: `drop-shadow(0 0 8px ${t1?.primaryColor || "#f97316"}99) saturate(1.25)`, clipPath: "polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)" }} />
           ) : (
             <div style={{ width: 64, height: 64, borderRadius: 12, background: alpha(t1?.primaryColor || "#f97316", 0.2), border: `2px solid ${alpha(t1?.primaryColor || "#f97316", 0.4)}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
               <span style={{ color: t1?.primaryColor || "#f97316", fontWeight: 900, fontSize: 18 }}>{team1}</span>
@@ -294,7 +294,7 @@ function CardFace({ matchNumber, team1, team2, date, day, time, venue, userPhoto
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, flex: 1, position: "relative" }}>
           {logo2 ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={logo2} alt={team2} crossOrigin="anonymous" style={{ width: 64, height: 64, objectFit: "contain" }} />
+            <img src={logo2} alt={team2} crossOrigin="anonymous" style={{ width: 64, height: 64, objectFit: "contain", filter: `drop-shadow(0 0 8px ${t2?.primaryColor || "#3b82f6"}99) saturate(1.25)`, clipPath: "polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)" }} />
           ) : (
             <div style={{ width: 64, height: 64, borderRadius: 12, background: alpha(t2?.primaryColor || "#3b82f6", 0.2), border: `2px solid ${alpha(t2?.primaryColor || "#3b82f6", 0.4)}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
               <span style={{ color: t2?.primaryColor || "#3b82f6", fontWeight: 900, fontSize: 18 }}>{team2}</span>
@@ -375,7 +375,7 @@ function CardFace({ matchNumber, team1, team2, date, day, time, venue, userPhoto
           >
             {supportLogo ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={supportLogo} alt={supportingTeam} crossOrigin="anonymous" style={{ width: 19, height: 19, objectFit: "contain" }} />
+              <img src={supportLogo} alt={supportingTeam} crossOrigin="anonymous" style={{ width: 19, height: 19, objectFit: "contain", filter: "saturate(1.25) brightness(1.1)", clipPath: "polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)" }} />
             ) : (
               <span style={{ color: "white", fontSize: 6, fontWeight: 900 }}>{supportingTeam.slice(0, 2)}</span>
             )}
@@ -686,7 +686,7 @@ export function MatchCardBuilder() {
         </div>
 
         {/* ── Card Preview ── */}
-        <div className="flex flex-col items-center gap-4 lg:sticky lg:top-24 lg:self-start">
+        <div className="flex w-full flex-col items-center gap-4 overflow-x-auto lg:sticky lg:top-24 lg:self-start lg:overflow-x-visible">
           <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Preview</p>
           <div ref={cardRef}>
             <CardFace

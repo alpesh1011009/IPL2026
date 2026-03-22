@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -20,98 +22,46 @@ import { iplTeams, teamLogoUrls } from "@/data/teams";
 import { iplSchedule, teamTextColors } from "@/data/schedule";
 import { MatchCountdown } from "@/components/ui/match-countdown";
 import { MatchPrediction } from "@/components/ui/match-prediction";
+import { useLanguage } from "@/context/language-context";
+import type { TranslationKey } from "@/lib/translations";
 
-const tools = [
-  {
-    href: "/poster",
-    icon: ImageIcon,
-    label: "Match Poster",
-    description: "Branded cricket match posters with your business details.",
-    color: "text-blue-400",
-    bg: "bg-blue-500/10",
-    border: "border-blue-500/20",
-    badge: "Most Popular",
-    badgeColor: "bg-blue-500/20 text-blue-300",
-  },
-  {
-    href: "/players",
-    icon: CreditCard,
-    label: "Player Cards",
-    description: "Download digital trading cards for 150+ cricketers.",
-    color: "text-yellow-400",
-    bg: "bg-yellow-500/10",
-    border: "border-yellow-500/20",
-  },
-  {
-    href: "/match-card",
-    icon: Ticket,
-    label: "Match Card",
-    description: "\"I'm going to the match\" card with your photo & team.",
-    color: "text-purple-400",
-    bg: "bg-purple-500/10",
-    border: "border-purple-500/20",
-    badge: "New",
-    badgeColor: "bg-purple-500/20 text-purple-300",
-  },
-  {
-    href: "/own-poster",
-    icon: Heart,
-    label: "Fan Support",
-    description: "Personal fan support poster for your favourite team or player.",
-    color: "text-rose-400",
-    bg: "bg-rose-500/10",
-    border: "border-rose-500/20",
-    badge: "New",
-    badgeColor: "bg-rose-500/20 text-rose-300",
-  },
-  {
-    href: "/memes",
-    icon: Sparkles,
-    label: "Memes & Posts",
-    description: "Shareable cricket memes and ready-made social posts.",
-    color: "text-pink-400",
-    bg: "bg-pink-500/10",
-    border: "border-pink-500/20",
-  },
-  {
-    href: "/schedule",
-    icon: CalendarDays,
-    label: "Schedule",
-    description: "Full cricket fixture list with venues and timings.",
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/10",
-    border: "border-emerald-500/20",
-  },
-  {
-    href: "/teams",
-    icon: Users,
-    label: "Teams",
-    description: "All cricket franchise teams with squads and stats.",
-    color: "text-orange-400",
-    bg: "bg-orange-500/10",
-    border: "border-orange-500/20",
-  },
-  {
-    href: "/quiz",
-    icon: HelpCircle,
-    label: "Cricket Quiz",
-    description: "15-question IPL trivia. Test your cricket knowledge!",
-    color: "text-cyan-400",
-    bg: "bg-cyan-500/10",
-    border: "border-cyan-500/20",
-    badge: "New",
-    badgeColor: "bg-cyan-500/20 text-cyan-300",
-  },
-];
-
-const steps = [
-  { num: "01", title: "Pick a Match or Player", desc: "Browse the full cricket schedule or 150+ player roster" },
-  { num: "02", title: "Add Your Details", desc: "Company name, phone, social media & logo — saved for next time" },
-  { num: "03", title: "Download & Share", desc: "Export as PNG and share instantly on WhatsApp or Instagram" },
+const toolDefs: {
+  href: string;
+  icon: React.ElementType;
+  labelKey: TranslationKey;
+  descKey: TranslationKey;
+  color: string;
+  bg: string;
+  border: string;
+  badgeKey?: TranslationKey;
+  badgeColor?: string;
+}[] = [
+  { href: "/poster", icon: ImageIcon, labelKey: "toolMatchPoster", descKey: "toolMatchPosterDesc", color: "text-blue-400", bg: "bg-blue-500/10", border: "border-blue-500/20", badgeKey: "badgeMostPopular", badgeColor: "bg-blue-500/20 text-blue-300" },
+  { href: "/players", icon: CreditCard, labelKey: "toolPlayerCards", descKey: "toolPlayerCardsDesc", color: "text-yellow-400", bg: "bg-yellow-500/10", border: "border-yellow-500/20" },
+  { href: "/match-card", icon: Ticket, labelKey: "toolMatchCard", descKey: "toolMatchCardDesc", color: "text-purple-400", bg: "bg-purple-500/10", border: "border-purple-500/20", badgeKey: "badgeNew", badgeColor: "bg-purple-500/20 text-purple-300" },
+  { href: "/own-poster", icon: Heart, labelKey: "toolFanSupport", descKey: "toolFanSupportDesc", color: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/20", badgeKey: "badgeNew", badgeColor: "bg-rose-500/20 text-rose-300" },
+  { href: "/memes", icon: Sparkles, labelKey: "toolMemes", descKey: "toolMemesDesc", color: "text-pink-400", bg: "bg-pink-500/10", border: "border-pink-500/20" },
+  { href: "/schedule", icon: CalendarDays, labelKey: "toolSchedule", descKey: "toolScheduleDesc", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20" },
+  { href: "/teams", icon: Users, labelKey: "toolTeams", descKey: "toolTeamsDesc", color: "text-orange-400", bg: "bg-orange-500/10", border: "border-orange-500/20" },
+  { href: "/quiz", icon: HelpCircle, labelKey: "toolCricketQuiz", descKey: "toolCricketQuizDesc", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20", badgeKey: "badgeNew", badgeColor: "bg-cyan-500/20 text-cyan-300" },
 ];
 
 export default function HomePage() {
+  const { t } = useLanguage();
   const nextMatches = iplSchedule.slice(0, 6);
+
+  const steps = [
+    { num: "01", title: t("step1Title") as string, desc: t("step1Desc") as string },
+    { num: "02", title: t("step2Title") as string, desc: t("step2Desc") as string },
+    { num: "03", title: t("step3Title") as string, desc: t("step3Desc") as string },
+  ];
+
+  const tools = toolDefs.map((tool) => ({
+    ...tool,
+    label: t(tool.labelKey) as string,
+    description: t(tool.descKey) as string,
+    badge: tool.badgeKey ? (t(tool.badgeKey) as string) : undefined,
+  }));
 
   return (
     <div className="flex flex-col">
@@ -218,12 +168,12 @@ export default function HomePage() {
                 Cricket Season is LIVE
               </div>
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-                Your Ultimate{" "}
-                <span className="text-primary">Cricket</span>{" "}
-                Content Hub
+                {t("heroH1a")}{" "}
+                <span className="text-primary">{t("heroH1b")}</span>{" "}
+                {t("heroH1c")}
               </h1>
               <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-                Create match posters, player cards, fan support posts, memes, and match-day cards — all branded with your business details. Free for everyone.
+                {t("heroDesc")}
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
@@ -231,21 +181,21 @@ export default function HomePage() {
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30"
                 >
                   <Zap className="h-4 w-4" />
-                  Create Poster — Free
+                  {t("createPosterFree")}
                 </Link>
                 <Link
                   href="/players"
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-yellow-500/30 bg-yellow-500/10 px-6 py-3.5 text-sm font-medium text-yellow-300 transition-all hover:bg-yellow-500/20"
                 >
                   <CreditCard className="h-4 w-4" />
-                  Player Cards
+                  {t("toolPlayerCards")}
                 </Link>
                 <Link
                   href="/schedule"
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-medium text-white transition-all hover:bg-white/10"
                 >
                   <CalendarDays className="h-4 w-4" />
-                  View Schedule
+                  {t("viewSchedule")}
                 </Link>
               </div>
 
@@ -253,17 +203,17 @@ export default function HomePage() {
               <div className="mt-6 flex flex-wrap items-center gap-6">
                 <div>
                   <p className="text-2xl font-bold text-white">70+</p>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Matches</p>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{t("matchesLabel")}</p>
                 </div>
                 <div className="h-8 w-px bg-white/10" />
                 <div>
                   <p className="text-2xl font-bold text-white">150+</p>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Players</p>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{t("playersLabel")}</p>
                 </div>
                 <div className="h-8 w-px bg-white/10" />
                 <div>
                   <p className="text-2xl font-bold text-white">10</p>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Teams</p>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{t("teamsLabel")}</p>
                 </div>
                 <div className="h-8 w-px bg-white/10" />
                 <div>
@@ -289,7 +239,7 @@ export default function HomePage() {
                           alt={team.shortName}
                           width={48}
                           height={48}
-                          className="h-full w-full object-contain drop-shadow-lg"
+                          className="h-full w-full object-contain drop-shadow-lg saturate-125 brightness-110 logo-clip"
                           unoptimized
                         />
                       ) : (
@@ -374,8 +324,8 @@ export default function HomePage() {
       <section className="border-t border-white/5">
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-14">
           <h2 className="mb-8 text-center text-2xl font-bold sm:text-3xl">
-            Get Started in{" "}
-            <span className="text-primary">3 Steps</span>
+            {t("getStarted")}{" "}
+            <span className="text-primary">{t("getStarted3Steps")}</span>
           </h2>
           <div className="grid gap-6 sm:grid-cols-3">
             {steps.map((step, i) => (
@@ -402,7 +352,7 @@ export default function HomePage() {
             <div className="lg:col-span-2">
               <div className="mb-4 flex items-center gap-2">
                 <span className="text-lg font-bold text-white">
-                  Next <span className="text-primary">Match</span>
+                  {t("nextMatch")} <span className="text-primary">{t("nextMatchHighlight")}</span>
                 </span>
               </div>
               <MatchCountdown />
@@ -420,11 +370,11 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-14">
           <div className="mb-6 flex items-center justify-between">
             <h2 className="text-2xl font-bold">
-              Upcoming{" "}
-              <span className="text-primary">Matches</span>
+              {t("upcomingMatches")}{" "}
+              <span className="text-primary">{t("upcomingMatchesHighlight")}</span>
             </h2>
             <Link href="/schedule" className="flex items-center gap-1 text-sm font-medium text-primary hover:underline">
-              Full Schedule <ArrowRight className="h-3.5 w-3.5" />
+              {t("viewFullSchedule")} <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -549,7 +499,7 @@ export default function HomePage() {
                       alt={team.shortName}
                       width={32}
                       height={32}
-                      className="h-8 w-8 object-contain"
+                      className="h-8 w-8 object-contain saturate-125 brightness-110 drop-shadow-md logo-clip"
                       unoptimized
                     />
                   ) : (

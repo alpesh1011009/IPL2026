@@ -153,10 +153,10 @@ export function CricketQuiz() {
 
   async function handleShare() {
     const grade = getGrade(score);
-    const text = `🏏 CricPro Cricket Quiz\nI scored ${score}/${QUESTIONS.length} — ${grade.label} ${grade.emoji}\nTest your cricket knowledge at cricpro.in!`;
+    const text = `🏏 cricpost.in Cricket Quiz\nI scored ${score}/${QUESTIONS.length} — ${grade.label} ${grade.emoji}\nTest your cricket knowledge at cricpost.in!`;
     try {
       if (navigator.share) {
-        await navigator.share({ title: "CricPro Quiz Result", text });
+        await navigator.share({ title: "cricpost.in Quiz Result", text });
       } else {
         await navigator.clipboard.writeText(text);
       }

@@ -184,7 +184,7 @@ export function PlayersGrid() {
               />
             </div>
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               <div>
                 <label className="mb-1 block text-xs font-medium text-muted-foreground">
                   Instagram
@@ -282,7 +282,7 @@ export function PlayersGrid() {
               <img
                 src={teamLogoUrls[team.shortName]!}
                 alt={team.shortName}
-                className="h-4 w-4 object-contain"
+                className="h-4 w-4 object-contain saturate-125 brightness-110 logo-clip"
               />
             )}
             {team.shortName}
@@ -326,8 +326,12 @@ export function PlayersGrid() {
       {/* Grid */}
       {cards.length > 0 ? (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {cards.map(({ player, team, key }) => (
-            <div key={key} className="flex justify-center">
+          {cards.map(({ player, team, key }, index) => (
+            <div
+              key={key}
+              className="flex justify-center anim-fade-in-up"
+              style={{ animationDelay: `${Math.min(index * 45, 540)}ms` }}
+            >
               <PlayerCard
                 player={player}
                 team={team}

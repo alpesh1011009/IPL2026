@@ -110,6 +110,48 @@ body {
 .anim-particle-b { animation: cricket-particle-rise 2.4s ease-out infinite 0.9s; }
 .anim-particle-c { animation: cricket-particle-rise 2.4s ease-out infinite 1.8s; }
 
+/* ===== Card / UI Animations ===== */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+@keyframes bounce-pop {
+  0%, 100% { transform: scale(1); }
+  40%       { transform: scale(1.25) rotate(-8deg); }
+  60%       { transform: scale(1.1)  rotate(4deg); }
+}
+@keyframes shimmer-border {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+.anim-fade-in-up  { animation: fade-in-up 0.5s ease-out both; }
+.anim-scale-in    { animation: scale-in  0.4s ease-out both; }
+.anim-float-y     { animation: float-y   3s   ease-in-out infinite; }
+.anim-bounce-pop  { animation: bounce-pop 0.5s ease-out both; }
+
+/* Stagger delays for grid children */
+.anim-delay-1  { animation-delay:  60ms; }
+.anim-delay-2  { animation-delay: 120ms; }
+.anim-delay-3  { animation-delay: 180ms; }
+.anim-delay-4  { animation-delay: 240ms; }
+.anim-delay-5  { animation-delay: 300ms; }
+.anim-delay-6  { animation-delay: 360ms; }
+
+/* ===== Team Logo Clip — octagon removes all four corners ===== */
+.logo-clip {
+  clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+}
+
 /* ===== Skeleton Shimmer ===== */
 @keyframes skeleton-shimmer {
   from { background-position: -200% center; }

@@ -327,7 +327,7 @@ function BrandingFooter({
               textTransform: "uppercase",
             }}
           >
-            CricPro
+            cricpost.in
           </span>
           <div
             style={{
@@ -418,7 +418,7 @@ function CardFace({ player, team, businessDetails }: Props) {
               src={logoUrl}
               alt={team.shortName}
               crossOrigin="anonymous"
-              style={{ width: 30, height: 30, objectFit: "contain" }}
+              style={{ width: 30, height: 30, objectFit: "contain", filter: `drop-shadow(0 0 6px ${team.primaryColor}99) saturate(1.3)`, clipPath: "polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)" }}
             />
           ) : (
             <div
@@ -543,18 +543,19 @@ function CardFace({ player, team, businessDetails }: Props) {
               objectPosition: "top center",
               position: "relative",
               zIndex: 1,
+              filter: "saturate(1.2) contrast(1.05) brightness(1.04)",
             }}
           />
         </div>
-        {/* Bottom fade */}
+        {/* Bottom fade — team-color tinted */}
         <div
           style={{
             position: "absolute",
             bottom: 0,
             left: 0,
             right: 0,
-            height: 90,
-            background: "linear-gradient(to top, #0d0d0d, transparent)",
+            height: 110,
+            background: `linear-gradient(to top, ${team.primaryColor}e0 0%, ${team.primaryColor}50 45%, transparent 100%)`,
             zIndex: 2,
           }}
         />
@@ -703,9 +704,20 @@ export function PlayerCard({ player, team, businessDetails }: Props) {
   };
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <div ref={cardRef}>
-        <CardFace player={player} team={team} businessDetails={businessDetails} />
+    <div className="flex flex-col items-center gap-3 group/card">
+      <div
+        className="transition-all duration-300 ease-out group-hover/card:scale-[1.03] group-hover/card:-translate-y-2 cursor-pointer rounded-2xl"
+        style={{ filter: "drop-shadow(0 0 0px transparent)" }}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLDivElement).style.filter = `drop-shadow(0 8px 24px ${team.primaryColor}55)`;
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLDivElement).style.filter = "drop-shadow(0 0 0px transparent)";
+        }}
+      >
+        <div ref={cardRef}>
+          <CardFace player={player} team={team} businessDetails={businessDetails} />
+        </div>
       </div>
       <button
         onClick={handleDownload}

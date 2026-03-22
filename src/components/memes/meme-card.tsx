@@ -47,8 +47,8 @@ export function MemeCard({ meme }: { meme: Meme }) {
   return (
     <div
       className={cn(
-        "group relative flex flex-col gap-4 rounded-2xl border bg-card p-5 transition-all duration-300",
-        "hover:shadow-xl hover:-translate-y-1",
+        "group anim-fade-in-up relative flex flex-col gap-4 rounded-2xl border bg-card p-5 transition-all duration-300",
+        "hover:shadow-2xl hover:-translate-y-1.5 hover:border-opacity-60",
         meme.accentBorder
       )}
     >
@@ -77,7 +77,7 @@ export function MemeCard({ meme }: { meme: Meme }) {
             {meme.language === "Hindi" ? "🇮🇳 हिंदी" : meme.language === "Gujarati" ? "🟠 ગુજરાતી" : "🌐 EN"}
           </span>
         </div>
-        <span className="text-2xl">{meme.emoji}</span>
+        <span className="text-2xl transition-transform duration-300 group-hover:scale-125 group-hover:-rotate-6 inline-block">{meme.emoji}</span>
       </div>
 
       {/* Title */}

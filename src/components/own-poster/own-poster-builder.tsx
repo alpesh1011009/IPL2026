@@ -97,7 +97,7 @@ export function OwnPosterBuilder() {
         mode === "player" && selectedPlayer
           ? selectedPlayer.name
           : selectedTeam;
-      link.download = `CricPro-Support-${subject.replace(/\s+/g, "-")}.png`;
+      link.download = `cricpost.in-Support-${subject.replace(/\s+/g, "-")}.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
     } catch (err) {
@@ -169,7 +169,7 @@ export function OwnPosterBuilder() {
                       </span>
                     )}
                   </div>
-                  <span className="hidden sm:block">{section.label}</span>
+                  <span>{section.label}</span>
                   {isActive && (
                     <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
                   )}
@@ -239,7 +239,7 @@ export function OwnPosterBuilder() {
                           alt={team.shortName}
                           width={32}
                           height={32}
-                          className="h-8 w-8 object-contain"
+                          className="h-8 w-8 object-contain saturate-125 brightness-110 logo-clip"
                           unoptimized
                         />
                       ) : (
@@ -474,7 +474,7 @@ export function OwnPosterBuilder() {
                   alt={selectedTeam}
                   width={88}
                   height={88}
-                  className="h-20 w-20 object-contain drop-shadow-2xl"
+                  className="h-20 w-20 object-contain drop-shadow-2xl saturate-125 brightness-110 logo-clip"
                   unoptimized
                 />
               ) : (
@@ -529,7 +529,7 @@ export function OwnPosterBuilder() {
                   alt={selectedTeam}
                   width={14}
                   height={14}
-                  className="h-3.5 w-3.5 object-contain"
+                  className="h-3.5 w-3.5 object-contain logo-clip"
                   unoptimized
                 />
                 <span className="text-[10px] font-bold text-white/70">
@@ -593,7 +593,7 @@ export function OwnPosterBuilder() {
 
           {/* Made-with branding */}
           <div className="bg-black/20 px-4 py-1.5 text-center">
-            <p className="text-[8px] text-white/30">Made with CricPro</p>
+            <p className="text-[8px] text-white/30">Made with cricpost.in</p>
           </div>
         </div>
       </div>

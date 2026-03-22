@@ -130,7 +130,7 @@ export function ScheduleTable({
                               alt={match.team1}
                               width={28}
                               height={28}
-                              className="h-full w-full object-contain"
+                              className="h-full w-full object-contain saturate-125 brightness-110 logo-clip"
                               unoptimized
                             />
                           ) : (
@@ -173,7 +173,7 @@ export function ScheduleTable({
                               alt={match.team2}
                               width={28}
                               height={28}
-                              className="h-full w-full object-contain"
+                              className="h-full w-full object-contain saturate-125 brightness-110 logo-clip"
                               unoptimized
                             />
                           ) : (

@@ -136,7 +136,7 @@ function TeamBadge({ shortName, right }: { shortName: string; right?: boolean })
     <div className={`flex items-center gap-2 ${right ? "flex-row-reverse" : ""}`}>
       <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5">
         {logo ? (
-          <Image src={logo} alt={shortName} width={36} height={36} className="h-9 w-9 object-contain" unoptimized />
+          <Image src={logo} alt={shortName} width={36} height={36} className="h-9 w-9 object-contain saturate-125 brightness-110 drop-shadow-md logo-clip" unoptimized />
         ) : (
           <span className={`text-xs font-black ${colorClass}`}>{shortName}</span>
         )}

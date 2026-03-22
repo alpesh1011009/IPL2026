@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { Sparkles, Search, RefreshCw } from "lucide-react";
 import { MemeCard, type Meme, type MemeCategory, type MemeLanguage } from "@/components/memes/meme-card";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/language-context";
 
 const ALL_MEMES: Meme[] = [
   // ════════════════════════════════════════════════
@@ -649,14 +650,14 @@ const CATEGORIES: (MemeCategory | "All")[] = [
 
 const LANGUAGES: (MemeLanguage | "All")[] = ["All", "English", "Hindi", "Gujarati"];
 
-const LANG_LABELS: Record<string, string> = {
-  All: "🌐 All Languages",
+const STATIC_LANG_LABELS: Record<string, string> = {
   English: "🌐 English",
   Hindi: "🇮🇳 हिंदी",
   Gujarati: "🟠 ગુજરાતી",
 };
 
 export function MemesClient() {
+  const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<MemeCategory | "All">("All");
   const [activeLang, setActiveLang] = useState<MemeLanguage | "All">("All");
   const [search, setSearch] = useState("");
@@ -694,17 +695,16 @@ export function MemesClient() {
           <div>
             <div className="mb-1.5 inline-flex items-center gap-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs font-medium text-purple-400">
               <Sparkles className="h-3 w-3" />
-              AI-Crafted Cricket Content
+              {t("memesBadge")}
             </div>
             <h1 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
-              IPL Memes &amp;{" "}
+              {t("memesTitle")}{" "}
               <span className="bg-gradient-to-r from-purple-400 to-orange-400 bg-clip-text text-transparent">
-                Viral Posts
+                {t("memesHighlight")}
               </span>
             </h1>
             <p className="mt-1 text-sm text-muted-foreground">
-              Funny &amp; shareable IPL content in{" "}
-              <span className="font-semibold text-foreground">English, हिंदी &amp; ગુજરાતી</span>. Copy &amp; share instantly! 🏏🔥
+              {t("memesSubtitle")}
             </p>
           </div>
 
@@ -725,7 +725,7 @@ export function MemesClient() {
                       : "border-blue-500/30 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
                   )}
                 >
-                  {LANG_LABELS[lang]} · {count}
+                  {STATIC_LANG_LABELS[lang]} · {count}
                 </button>
               );
             })}
@@ -742,7 +742,7 @@ export function MemesClient() {
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <input
                 type="text"
-                placeholder="Search memes, teams, players..."
+                placeholder={t("searchMemes") as string}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full rounded-lg border border-border bg-secondary pl-9 pr-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
@@ -751,10 +751,10 @@ export function MemesClient() {
             <button
               onClick={() => setShuffleKey((k) => k + 1)}
               className="flex items-center gap-2 rounded-lg border border-border bg-secondary px-3 py-2 text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:bg-secondary/80"
-              title="Shuffle"
+              title={t("shuffleMemes") as string}
             >
               <RefreshCw className="h-4 w-4" />
-              <span className="hidden sm:inline">Shuffle</span>
+              <span className="hidden sm:inline">{t("shuffleMemes")}</span>
             </button>
           </div>
 
@@ -775,27 +775,35 @@ export function MemesClient() {
                     : "bg-secondary text-muted-foreground border-border hover:text-foreground"
                 )}
               >
-                {LANG_LABELS[lang]}
+                {lang === "All" ? `🌐 ${t("allLanguages")}` : STATIC_LANG_LABELS[lang]}
               </button>
             ))}
           </div>
 
           {/* Category Pills */}
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={cn(
-                  "flex-shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition-all",
-                  activeCategory === cat
-                    ? "bg-primary text-primary-foreground shadow-md shadow-primary/25"
-                    : "bg-secondary text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {cat}
-              </button>
-            ))}
+            {CATEGORIES.map((cat) => {
+              const catLabel: Record<string, string> = {
+                All: t("allCategories") as string,
+                Funny: t("funny") as string,
+                Fact: t("facts") as string,
+                Prediction: t("predictions") as string,
+              };
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={cn(
+                    "flex-shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition-all",
+                    activeCategory === cat
+                      ? "bg-primary text-primary-foreground shadow-md shadow-primary/25"
+                      : "bg-secondary text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {catLabel[cat] ?? cat}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -804,12 +812,12 @@ export function MemesClient() {
       <div className="mx-auto max-w-7xl px-4 py-8">
         {filtered.length === 0 ? (
           <div className="py-24 text-center text-muted-foreground">
-            <p className="text-lg">No posts found.</p>
+            <p className="text-lg">{t("noMemesFound")}</p>
             <button
               onClick={() => { setSearch(""); setActiveCategory("All"); setActiveLang("All"); }}
               className="mt-4 text-sm text-primary underline-offset-4 hover:underline"
             >
-              Clear all filters
+              {t("tryDifferentFilter")}
             </button>
           </div>
         ) : (
@@ -819,8 +827,10 @@ export function MemesClient() {
               <span className="font-semibold text-foreground">{ALL_MEMES.length}</span> posts
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((meme) => (
-                <MemeCard key={`${meme.id}-${shuffleKey}`} meme={meme} />
+              {filtered.map((meme, index) => (
+                <div key={`${meme.id}-${shuffleKey}`} className="anim-fade-in-up" style={{ animationDelay: `${Math.min(index * 40, 480)}ms` }}>
+                  <MemeCard meme={meme} />
+                </div>
               ))}
             </div>
           </>

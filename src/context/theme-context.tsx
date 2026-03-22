@@ -17,7 +17,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<ThemeKey>(DEFAULT_THEME);
 
   useEffect(() => {
-    const saved = localStorage.getItem("cricpro-theme") as ThemeKey | null;
+    const saved = localStorage.getItem("cricpost-theme") as ThemeKey | null;
     const key = saved && themes[saved] ? saved : DEFAULT_THEME;
     setThemeState(key);
     applyTheme(key);
@@ -25,7 +25,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   function setTheme(key: ThemeKey) {
     setThemeState(key);
-    localStorage.setItem("cricpro-theme", key);
+    localStorage.setItem("cricpost-theme", key);
     applyTheme(key);
   }
 

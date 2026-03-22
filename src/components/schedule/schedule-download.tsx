@@ -184,7 +184,7 @@ export function ScheduleDownload({ matches }: { matches: Match[] }) {
                         <div className="flex flex-1 items-center justify-between">
                           <div className="flex items-center gap-1.5">
                             {teamLogoUrls[m.team1] ? (
-                              <Image src={teamLogoUrls[m.team1]!} alt={m.team1} width={16} height={16} className="h-4 w-4 object-contain" unoptimized />
+                              <Image src={teamLogoUrls[m.team1]!} alt={m.team1} width={16} height={16} className="h-4 w-4 object-contain logo-clip" unoptimized />
                             ) : (
                               <span className="text-[8px] font-black text-white/60">{m.team1}</span>
                             )}
@@ -194,7 +194,7 @@ export function ScheduleDownload({ matches }: { matches: Match[] }) {
                           <div className="flex items-center gap-1.5">
                             <span className={cn("text-xs font-bold", teamTextColors[m.team2])}>{m.team2}</span>
                             {teamLogoUrls[m.team2] ? (
-                              <Image src={teamLogoUrls[m.team2]!} alt={m.team2} width={16} height={16} className="h-4 w-4 object-contain" unoptimized />
+                              <Image src={teamLogoUrls[m.team2]!} alt={m.team2} width={16} height={16} className="h-4 w-4 object-contain logo-clip" unoptimized />
                             ) : (
                               <span className="text-[8px] font-black text-white/60">{m.team2}</span>
                             )}
@@ -229,7 +229,7 @@ export function ScheduleDownload({ matches }: { matches: Match[] }) {
                     </div>
                   )}
 
-                  <p className="mt-3 text-center text-[7px] text-white/15">Made with CricPro</p>
+                  <p className="mt-3 text-center text-[7px] text-white/15">Made with cricpost.in</p>
                 </div>
               </div>
             </div>

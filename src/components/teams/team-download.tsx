@@ -273,7 +273,7 @@ export function TeamDownload({ team }: { team: Team }) {
                           alt={team.shortName}
                           width={56}
                           height={56}
-                          className="h-14 w-14 object-contain opacity-90"
+                          className="h-14 w-14 object-contain saturate-125 brightness-110 drop-shadow-lg logo-clip"
                           unoptimized
                         />
                       )}
@@ -327,7 +327,7 @@ export function TeamDownload({ team }: { team: Team }) {
                             alt={player.name}
                             width={28}
                             height={28}
-                            className="h-7 w-7 rounded-full object-cover ring-1 ring-white/10"
+                            className="h-7 w-7 rounded-full object-cover ring-1 ring-white/10 saturate-110 brightness-105"
                           />
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-1">
@@ -411,7 +411,7 @@ export function TeamDownload({ team }: { team: Team }) {
                   )}
 
                   <p className="pb-2 text-center text-[7px] text-white/15">
-                    Made with CricPro
+                    Made with cricpost.in
                   </p>
                 </div>
               </div>

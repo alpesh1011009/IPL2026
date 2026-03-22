@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { useAuth } from "@/context/auth-context";
+import { fetchProfile, upsertProfile } from "@/lib/supabase/profile";
 
 export interface BusinessDetails {
   companyName: string;
@@ -12,7 +14,7 @@ export interface BusinessDetails {
   logoUrl: string;
 }
 
-const STORAGE_KEY = "cricpro_business_details";
+const STORAGE_KEY = "cricpost_business_details";
 
 const defaultDetails: BusinessDetails = {
   companyName: "",
@@ -24,25 +26,50 @@ const defaultDetails: BusinessDetails = {
   logoUrl: "",
 };
 
+function loadFromStorage(): Partial<BusinessDetails> {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) return JSON.parse(saved) as Partial<BusinessDetails>;
+  } catch {
+    // ignore parse errors
+  }
+  return {};
+}
+
 export function useBusinessDetails() {
   const [details, setDetails] = useState<BusinessDetails>(defaultDetails);
   const [loaded, setLoaded] = useState(false);
+  const { user, authLoading } = useAuth();
+  const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Track when details were fetched from Supabase to skip one save cycle
+  const justFetchedRef = useRef(false);
 
   // Load from localStorage on mount
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved) as Partial<BusinessDetails>;
-        setDetails((prev) => ({ ...prev, ...parsed }));
-      }
-    } catch {
-      // ignore parse errors
-    }
+    const saved = loadFromStorage();
+    setDetails((prev) => ({ ...prev, ...saved }));
     setLoaded(true);
   }, []);
 
-  // Save to localStorage on change (skip initial load)
+  // Sync from Supabase when user logs in
+  useEffect(() => {
+    if (authLoading || !user) return;
+    fetchProfile(user.id).then((remoteDetails) => {
+      if (remoteDetails) {
+        justFetchedRef.current = true;
+        setDetails((prev) => ({ ...prev, ...remoteDetails, logoUrl: prev.logoUrl }));
+      }
+    });
+  }, [user, authLoading]);
+
+  // Reset to localStorage when user logs out
+  useEffect(() => {
+    if (authLoading || user) return;
+    const saved = loadFromStorage();
+    setDetails({ ...defaultDetails, ...saved });
+  }, [user, authLoading]);
+
+  // Save to localStorage whenever details change (skip initial load)
   useEffect(() => {
     if (!loaded) return;
     try {
@@ -53,6 +80,26 @@ export function useBusinessDetails() {
       // storage full or unavailable
     }
   }, [details, loaded]);
+
+  // Debounced save to Supabase when logged in
+  useEffect(() => {
+    if (!loaded || !user) return;
+
+    // Skip the first save cycle right after fetching from Supabase
+    if (justFetchedRef.current) {
+      justFetchedRef.current = false;
+      return;
+    }
+
+    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    saveTimerRef.current = setTimeout(() => {
+      upsertProfile(user.id, { ...details, logoUrl: "" });
+    }, 1500);
+
+    return () => {
+      if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    };
+  }, [details, loaded, user]);
 
   const updateField = useCallback(
     (field: keyof BusinessDetails, value: string) => {

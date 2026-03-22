@@ -14,8 +14,8 @@ const SEED: Record<string, { t1: number; t2: number }> = {
   "10": { t1: 134, t2: 168 }, "11": { t1: 298, t2: 271 }, "12": { t1: 185, t2: 207 },
 };
 
-const VOTE_KEY = (n: number) => `cricpro_pred_vote_${n}`;
-const COUNT_KEY = (n: number) => `cricpro_pred_counts_${n}`;
+const VOTE_KEY = (n: number) => `cricpost_pred_vote_${n}`;
+const COUNT_KEY = (n: number) => `cricpost_pred_counts_${n}`;
 
 interface Counts { t1: number; t2: number }
 
@@ -135,7 +135,7 @@ function PollCard({ matchNumber, team1, team2, date }: PollCardProps) {
             }`}
         >
           {logo1 ? (
-            <Image src={logo1} alt={team1} width={32} height={32} className="h-8 w-8 object-contain" unoptimized />
+            <Image src={logo1} alt={team1} width={32} height={32} className="h-8 w-8 object-contain saturate-125 brightness-110 drop-shadow-md logo-clip" unoptimized />
           ) : (
             <span className={`text-xs font-black ${t1color}`}>{team1}</span>
           )}
@@ -159,7 +159,7 @@ function PollCard({ matchNumber, team1, team2, date }: PollCardProps) {
             }`}
         >
           {logo2 ? (
-            <Image src={logo2} alt={team2} width={32} height={32} className="h-8 w-8 object-contain" unoptimized />
+            <Image src={logo2} alt={team2} width={32} height={32} className="h-8 w-8 object-contain saturate-125 brightness-110 drop-shadow-md logo-clip" unoptimized />
           ) : (
             <span className={`text-xs font-black ${t2color}`}>{team2}</span>
           )}
