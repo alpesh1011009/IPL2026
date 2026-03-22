@@ -5,8 +5,8 @@ import { ScheduleDownload } from "@/components/schedule/schedule-download";
 import { CalendarDays } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "IPL 2026 Full Schedule & Timetable | IPLPro",
-  description: "Complete IPL 2026 match schedule with dates, times, venues. Create posters for any match and download the full schedule.",
+  title: "Cricket 2026 Full Schedule | CricPro",
+  description: "Complete cricket match schedule with dates, times, venues. Create posters for any match and download the full schedule.",
 };
 
 export default function SchedulePage() {
@@ -14,43 +14,43 @@ export default function SchedulePage() {
   const venues = new Set(iplSchedule.map((m) => m.venue)).size;
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
+    <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:py-6">
       {/* Page header */}
-      <div className="mb-10 text-center">
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
-          <CalendarDays className="h-3.5 w-3.5" />
-          Phase 1 Schedule
-        </div>
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-          TATA IPL 2026{" "}
-          <span className="bg-gradient-to-r from-primary to-yellow-400 bg-clip-text text-transparent">
-            Match Schedule
-          </span>
-        </h1>
-        <p className="mt-3 text-muted-foreground sm:text-lg">
-          {totalMatches} matches (Phase 1) &bull; {venues} venues &bull; Click any match to create a poster
-        </p>
-
-        {/* Stats */}
-        <div className="mt-6 inline-flex items-center gap-6 rounded-xl border border-white/10 bg-white/5 px-6 py-3">
-          <div className="text-center">
-            <p className="text-2xl font-bold text-primary">{totalMatches}</p>
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Matches</p>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <div className="mb-1.5 inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+            <CalendarDays className="h-3 w-3" />
+            Phase 1 Schedule
           </div>
-          <div className="h-8 w-px bg-white/10" />
-          <div className="text-center">
-            <p className="text-2xl font-bold text-white">10</p>
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Teams</p>
-          </div>
-          <div className="h-8 w-px bg-white/10" />
-          <div className="text-center">
-            <p className="text-2xl font-bold text-yellow-400">{venues}</p>
-            <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Venues</p>
-          </div>
+          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            Cricket 2026{" "}
+            <span className="bg-gradient-to-r from-primary to-yellow-400 bg-clip-text text-transparent">
+              Match Schedule
+            </span>
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {totalMatches} matches (Phase 1) &bull; {venues} venues &bull; Click any match to create a poster
+          </p>
         </div>
 
-        {/* Download button */}
-        <div className="mt-6">
+        {/* Stats + Download */}
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="inline-flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 px-4 py-2">
+            <div className="text-center">
+              <p className="text-lg font-bold text-primary">{totalMatches}</p>
+              <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Matches</p>
+            </div>
+            <div className="h-6 w-px bg-white/10" />
+            <div className="text-center">
+              <p className="text-lg font-bold text-white">10</p>
+              <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Teams</p>
+            </div>
+            <div className="h-6 w-px bg-white/10" />
+            <div className="text-center">
+              <p className="text-lg font-bold text-yellow-400">{venues}</p>
+              <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Venues</p>
+            </div>
+          </div>
           <ScheduleDownload matches={iplSchedule} />
         </div>
       </div>

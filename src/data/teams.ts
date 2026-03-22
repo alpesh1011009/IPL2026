@@ -32,6 +32,20 @@ export function getPlayerImage(player: Player): string {
   return player.headshotId ? `${BASE_IMG}/${player.headshotId}.png` : DEFAULT_IMG;
 }
 
+/** Team outline/white logo URLs (used on dark backgrounds). */
+export const teamLogoUrls: Record<string, string | null> = {
+  CSK: "https://documents.iplt20.com/ipl/CSK/Logos/Logooutline/CSKoutline.png",
+  MI: "https://documents.iplt20.com/ipl/MI/Logos/Logooutline/MIoutline.png",
+  RCB: "https://documents.iplt20.com/ipl/RCB/Logos/Logooutline/RCBoutline.png",
+  KKR: "https://documents.iplt20.com/ipl/KKR/Logos/Logooutline/KKRoutline.png",
+  DC: "https://documents.iplt20.com/ipl/DC/Logos/LogoOutline/DCoutline.png",
+  PBKS: "https://documents.iplt20.com/ipl/PBKS/Logos/Logooutline/PBKSoutline.png",
+  RR: "https://documents.iplt20.com/ipl/RR/Logos/Logooutline/RRoutline.png",
+  SRH: "https://documents.iplt20.com/ipl/SRH/Logos/Logooutline/SRHoutline.png",
+  GT: "https://documents.iplt20.com/ipl/GT/Logos/Logooutline/GToutline.png",
+  LSG: "https://documents.iplt20.com/ipl/LSG/Logos/Logooutline/LSGoutline.png",
+};
+
 export const iplTeams: Team[] = [
   {
     id: "csk",

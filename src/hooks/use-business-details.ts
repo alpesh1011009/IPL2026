@@ -12,7 +12,7 @@ export interface BusinessDetails {
   logoUrl: string;
 }
 
-const STORAGE_KEY = "iplpro_business_details";
+const STORAGE_KEY = "cricpro_business_details";
 
 const defaultDetails: BusinessDetails = {
   companyName: "",

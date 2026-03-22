@@ -17,6 +17,7 @@ import {
   User,
 } from "lucide-react";
 import type { Team, Player } from "@/data/teams";
+import { TeamDownload } from "@/components/teams/team-download";
 
 const roleConfig: Record<
   Player["role"],
@@ -214,6 +215,9 @@ export function TeamCard({ team }: { team: Team }) {
           </>
         )}
       </button>
+
+      {/* Download team card */}
+      <TeamDownload team={team} />
     </div>
   );
 }

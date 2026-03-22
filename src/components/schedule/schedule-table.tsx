@@ -6,19 +6,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { CalendarDays, Clock, MapPin, Download, Search, Filter } from "lucide-react";
 import type { Match } from "@/data/schedule";
-
-const teamLogos: Record<string, string> = {
-  CSK: "https://documents.iplt20.com/ipl/CSK/Logos/Logooutline/CSKoutline.png",
-  MI: "https://documents.iplt20.com/ipl/MI/Logos/Logooutline/MIoutline.png",
-  RCB: "https://documents.iplt20.com/ipl/RCB/Logos/Logooutline/RCBoutline.png",
-  KKR: "https://documents.iplt20.com/ipl/KKR/Logos/Logooutline/KKRoutline.png",
-  DC: "https://documents.iplt20.com/ipl/DC/Logos/Logooutline/DCoutline.png",
-  PBKS: "https://documents.iplt20.com/ipl/PBKS/Logos/Logooutline/PBKSoutline.png",
-  RR: "https://documents.iplt20.com/ipl/RR/Logos/Logooutline/RRoutline.png",
-  SRH: "https://documents.iplt20.com/ipl/SRH/Logos/Logooutline/SRHoutline.png",
-  GT: "https://documents.iplt20.com/ipl/GT/Logos/Logooutline/GToutline.png",
-  LSG: "https://documents.iplt20.com/ipl/LSG/Logos/Logooutline/LSGoutline.png",
-};
+import { teamLogoUrls } from "@/data/teams";
 
 interface Props {
   matches: Match[];
@@ -135,15 +123,19 @@ export function ScheduleTable({
                     <div className="flex flex-1 items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
                       {/* Team 1 */}
                       <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-full bg-white/5 p-1.5 ring-1 ring-white/10">
-                          <Image
-                            src={teamLogos[match.team1] || ""}
-                            alt={match.team1}
-                            width={28}
-                            height={28}
-                            className="h-full w-full object-contain"
-                            unoptimized
-                          />
+                        <div className="h-10 w-10 rounded-full bg-white/5 p-1.5 ring-1 ring-white/10 flex items-center justify-center">
+                          {teamLogoUrls[match.team1] ? (
+                            <Image
+                              src={teamLogoUrls[match.team1]!}
+                              alt={match.team1}
+                              width={28}
+                              height={28}
+                              className="h-full w-full object-contain"
+                              unoptimized
+                            />
+                          ) : (
+                            <span className="text-[9px] font-black text-white/70">{match.team1}</span>
+                          )}
                         </div>
                         <div>
                           <p className={cn("text-sm font-bold", teamTextColors[match.team1])}>
@@ -174,15 +166,19 @@ export function ScheduleTable({
                             {teamFullNames[match.team2]}
                           </p>
                         </div>
-                        <div className="h-10 w-10 rounded-full bg-white/5 p-1.5 ring-1 ring-white/10">
-                          <Image
-                            src={teamLogos[match.team2] || ""}
-                            alt={match.team2}
-                            width={28}
-                            height={28}
-                            className="h-full w-full object-contain"
-                            unoptimized
-                          />
+                        <div className="h-10 w-10 rounded-full bg-white/5 p-1.5 ring-1 ring-white/10 flex items-center justify-center">
+                          {teamLogoUrls[match.team2] ? (
+                            <Image
+                              src={teamLogoUrls[match.team2]!}
+                              alt={match.team2}
+                              width={28}
+                              height={28}
+                              className="h-full w-full object-contain"
+                              unoptimized
+                            />
+                          ) : (
+                            <span className="text-[9px] font-black text-white/70">{match.team2}</span>
+                          )}
                         </div>
                       </div>
                     </div>

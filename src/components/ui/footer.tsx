@@ -10,11 +10,11 @@ export function Footer() {
               <Trophy className="h-4 w-4" />
             </div>
             <span className="text-sm font-semibold">
-              IPL<span className="text-primary">Pro</span>
+              Cric<span className="text-primary">Pro</span>
             </span>
           </div>
           <p className="text-xs text-muted-foreground">
-            &copy; 2026 IPLPro. Not affiliated with BCCI or IPL. All team logos are property of their respective owners.
+            &copy; 2026 CricPro. Not affiliated with BCCI or any cricket board. All team logos are property of their respective owners.
           </p>
         </div>
       </div>

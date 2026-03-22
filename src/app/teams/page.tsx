@@ -4,9 +4,9 @@ import { TeamCard } from "@/components/teams/team-card";
 import { Trophy, Users } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "IPL 2026 Teams & Squads | IPLPro",
+  title: "Cricket Teams & Squads | CricPro",
   description:
-    "Explore all 10 IPL 2026 teams with full squad details, player roles, and team information.",
+    "Explore all cricket teams with full squad details, player roles, and team information.",
 };
 
 export default function TeamsPage() {
@@ -18,7 +18,7 @@ export default function TeamsPage() {
       <div className="mb-10 text-center">
         <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
           <Trophy className="h-3.5 w-3.5" />
-          IPL 2026 Season
+          Cricket 2026
         </div>
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
           All Teams &{" "}

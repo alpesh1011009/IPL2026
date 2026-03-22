@@ -5,6 +5,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useBusinessDetails } from "@/hooks/use-business-details";
 import type { Match } from "@/data/schedule";
+import { teamLogoUrls } from "@/data/teams";
 import {
   Download,
   Loader2,
@@ -19,19 +20,6 @@ import {
   Save,
   Trash2,
 } from "lucide-react";
-
-const teamLogos: Record<string, string> = {
-  CSK: "https://documents.iplt20.com/ipl/CSK/Logos/Logooutline/CSKoutline.png",
-  MI: "https://documents.iplt20.com/ipl/MI/Logos/Logooutline/MIoutline.png",
-  RCB: "https://documents.iplt20.com/ipl/RCB/Logos/Logooutline/RCBoutline.png",
-  KKR: "https://documents.iplt20.com/ipl/KKR/Logos/Logooutline/KKRoutline.png",
-  DC: "https://documents.iplt20.com/ipl/DC/Logos/Logooutline/DCoutline.png",
-  PBKS: "https://documents.iplt20.com/ipl/PBKS/Logos/Logooutline/PBKSoutline.png",
-  RR: "https://documents.iplt20.com/ipl/RR/Logos/Logooutline/RRoutline.png",
-  SRH: "https://documents.iplt20.com/ipl/SRH/Logos/Logooutline/SRHoutline.png",
-  GT: "https://documents.iplt20.com/ipl/GT/Logos/Logooutline/GToutline.png",
-  LSG: "https://documents.iplt20.com/ipl/LSG/Logos/Logooutline/LSGoutline.png",
-};
 
 const teamTextColors: Record<string, string> = {
   CSK: "text-yellow-400", MI: "text-blue-400", RCB: "text-red-400",
@@ -57,7 +45,7 @@ export function ScheduleDownload({ matches }: { matches: Match[] }) {
         windowWidth: 800,
       });
       const link = document.createElement("a");
-      link.download = `IPL-2026-Full-Schedule${details.companyName ? `-${details.companyName.replace(/\s+/g, "-")}` : ""}.png`;
+      link.download = `Cricket-2026-Full-Schedule${details.companyName ? `-${details.companyName.replace(/\s+/g, "-")}` : ""}.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
     } catch (err) {
@@ -182,7 +170,7 @@ export function ScheduleDownload({ matches }: { matches: Match[] }) {
                 <div ref={scheduleRef} className="bg-[#09090b] p-5" style={{ width: "500px" }}>
                   {/* Header */}
                   <div className="mb-4 rounded-xl bg-gradient-to-r from-[#1a1145] via-[#2d1b69] to-[#1a1145] p-4 text-center">
-                    <p className="text-lg font-black text-white tracking-wide">TATA IPL 2026</p>
+                    <p className="text-lg font-black text-white tracking-wide">Cricket 2026</p>
                     <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-purple-300">
                       Match Schedule &bull; Phase 1
                     </p>
@@ -195,13 +183,21 @@ export function ScheduleDownload({ matches }: { matches: Match[] }) {
                         <span className="w-7 text-[9px] font-bold text-white/30">#{m.matchNumber}</span>
                         <div className="flex flex-1 items-center justify-between">
                           <div className="flex items-center gap-1.5">
-                            <Image src={teamLogos[m.team1] || ""} alt={m.team1} width={16} height={16} className="h-4 w-4 object-contain" unoptimized />
+                            {teamLogoUrls[m.team1] ? (
+                              <Image src={teamLogoUrls[m.team1]!} alt={m.team1} width={16} height={16} className="h-4 w-4 object-contain" unoptimized />
+                            ) : (
+                              <span className="text-[8px] font-black text-white/60">{m.team1}</span>
+                            )}
                             <span className={cn("text-xs font-bold", teamTextColors[m.team1])}>{m.team1}</span>
                           </div>
                           <span className="text-[8px] font-black text-primary mx-2">VS</span>
                           <div className="flex items-center gap-1.5">
                             <span className={cn("text-xs font-bold", teamTextColors[m.team2])}>{m.team2}</span>
-                            <Image src={teamLogos[m.team2] || ""} alt={m.team2} width={16} height={16} className="h-4 w-4 object-contain" unoptimized />
+                            {teamLogoUrls[m.team2] ? (
+                              <Image src={teamLogoUrls[m.team2]!} alt={m.team2} width={16} height={16} className="h-4 w-4 object-contain" unoptimized />
+                            ) : (
+                              <span className="text-[8px] font-black text-white/60">{m.team2}</span>
+                            )}
                           </div>
                         </div>
                         <div className="ml-2 text-right">
@@ -233,7 +229,7 @@ export function ScheduleDownload({ matches }: { matches: Match[] }) {
                     </div>
                   )}
 
-                  <p className="mt-3 text-center text-[7px] text-white/15">Made with IPLPro</p>
+                  <p className="mt-3 text-center text-[7px] text-white/15">Made with CricPro</p>
                 </div>
               </div>
             </div>
