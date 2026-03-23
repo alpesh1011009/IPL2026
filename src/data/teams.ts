@@ -25,7 +25,7 @@ export interface Team {
   players: Player[];
 }
 
-const BASE_IMG = "https://documents.iplt20.com/ipl/IPLHeadshot2026";
+const BASE_IMG = "https://documents.iplt20.com/ipl/IPLHeadshot2025";
 const DEFAULT_IMG = "https://documents.iplt20.com/ipl/assets/images/Default-Men.png";
 
 export function getPlayerImage(player: Player): string {
@@ -263,8 +263,8 @@ export const iplTeams: Team[] = [
       { name: "Marco Jansen", role: "All-Rounder", country: "South Africa", headshotId: 586 },
       { name: "Azmatullah Omarzai", role: "All-Rounder", country: "Afghanistan", headshotId: 1354 },
       { name: "Lockie Ferguson", role: "Bowler", country: "New Zealand" },
-      { name: "Xavier Bartlett", role: "Bowler", country: "Australia" },
-      { name: "Mitch Owen", role: "All-Rounder", country: "Australia" },
+      { name: "Xavier Bartlett", role: "Bowler", country: "Australia", headshotId: 3572 },
+      { name: "Mitch Owen", role: "All-Rounder", country: "Australia", headshotId: 3870 },
       { name: "Cooper Connolly", role: "All-Rounder", country: "Australia" },
       { name: "Ben Dwarshuis", role: "Bowler", country: "Australia" },
     ],
@@ -302,7 +302,7 @@ export const iplTeams: Team[] = [
       { name: "Donovan Ferreira", role: "Wicket-Keeper", country: "South Africa" },
       { name: "Lhuan-dre Pretorius", role: "Wicket-Keeper", country: "South Africa", headshotId: 2827 },
       { name: "Kwena Maphaka", role: "Bowler", country: "South Africa", headshotId: 801 },
-      { name: "Nandre Burger", role: "Bowler", country: "South Africa", headshotId: 2806 },
+      { name: "Nandre Burger", role: "Bowler", country: "South Africa" },
       { name: "Adam Milne", role: "Bowler", country: "New Zealand" },
     ],
   },
@@ -360,7 +360,7 @@ export const iplTeams: Team[] = [
       { name: "Rashid Khan", role: "Bowler", country: "Afghanistan", isIcon: true, headshotId: 218 },
       { name: "Sai Sudharsan", role: "Batsman", country: "India", headshotId: 976 },
       { name: "Shahrukh Khan", role: "Batsman", country: "India", headshotId: 590 },
-      { name: "Anuj Rawat", role: "Wicket-Keeper", country: "India" },
+      { name: "Anuj Rawat", role: "Wicket-Keeper", country: "India", headshotId: 534 },
       { name: "Kumar Kushagra", role: "Wicket-Keeper", country: "India", headshotId: 3101 },
       { name: "Washington Sundar", role: "All-Rounder", country: "India", headshotId: 20 },
       { name: "Rahul Tewatia", role: "All-Rounder", country: "India", headshotId: 120 },
@@ -369,7 +369,7 @@ export const iplTeams: Team[] = [
       { name: "Prasidh Krishna", role: "Bowler", country: "India", headshotId: 150 },
       { name: "Ishant Sharma", role: "Bowler", country: "India", headshotId: 50 },
       { name: "Sai Kishore", role: "Bowler", country: "India", headshotId: 544 },
-      { name: "Manav Suthar", role: "Bowler", country: "India" },
+      { name: "Manav Suthar", role: "Bowler", country: "India", headshotId: 2443 },
       { name: "Jos Buttler", role: "Wicket-Keeper", country: "England", headshotId: 182 },
       { name: "Kagiso Rabada", role: "Bowler", country: "South Africa", headshotId: 116 },
       { name: "Glenn Phillips", role: "Wicket-Keeper", country: "New Zealand", headshotId: 635 },
@@ -403,12 +403,12 @@ export const iplTeams: Team[] = [
       { name: "Mohammed Shami", role: "Bowler", country: "India" },
       { name: "Avesh Khan", role: "Bowler", country: "India", headshotId: 109 },
       { name: "Mayank Yadav", role: "Bowler", country: "India", headshotId: 987 },
-      { name: "Mohsin Khan", role: "Bowler", country: "India", headshotId: 541 },
+      { name: "Mohsin Khan", role: "Bowler", country: "India" },
       { name: "M. Siddharth", role: "Bowler", country: "India", headshotId: 532 },
       { name: "Akash Singh", role: "Bowler", country: "India", headshotId: 535 },
       { name: "Aiden Markram", role: "All-Rounder", country: "South Africa", headshotId: 287 },
       { name: "Mitchell Marsh", role: "All-Rounder", country: "Australia", headshotId: 40 },
-      { name: "Matthew Breetzke", role: "Batsman", country: "South Africa" },
+      { name: "Matthew Breetzke", role: "Batsman", country: "South Africa", headshotId: 2805 },
       { name: "Josh Inglis", role: "Wicket-Keeper", country: "Australia" },
       { name: "Anrich Nortje", role: "Bowler", country: "South Africa" },
       { name: "Wanindu Hasaranga", role: "All-Rounder", country: "Sri Lanka" },
