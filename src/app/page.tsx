@@ -230,14 +230,27 @@ export default function HomePage() {
 
             {/* Team logos grid */}
             <div className="relative">
-              <div className="grid grid-cols-5 gap-3">
+              <div className="grid grid-cols-5 gap-3" style={{ perspective: "1000px" }}>
                 {iplTeams.map((team) => (
                   <Link
                     key={team.id}
                     href="/teams"
-                    className="group flex flex-col items-center gap-1.5 rounded-xl border border-white/[0.06] bg-white/[0.03] p-3 transition-all hover:border-white/20 hover:bg-white/[0.06] hover:scale-105"
+                    className="group flex flex-col items-center gap-1.5 rounded-xl border border-white/[0.06] bg-white/[0.03] p-3 transition-all hover:border-white/20 hover:bg-white/[0.06] hover:shadow-lg"
+                    style={{
+                      transformStyle: "preserve-3d",
+                      transform: "translateZ(0)",
+                    }}
+                    onMouseMove={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      const x = (e.clientX - rect.left) / rect.width - 0.5;
+                      const y = (e.clientY - rect.top) / rect.height - 0.5;
+                      e.currentTarget.style.transform = `rotateX(${y * 10}deg) rotateY(${x * 10}deg) translateZ(15px) scale(1.08)`;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "rotateX(0) rotateY(0) translateZ(0) scale(1)";
+                    }}
                   >
-                    <div className="h-10 w-10 sm:h-12 sm:w-12 flex items-center justify-center">
+                    <div className="h-10 w-10 sm:h-12 sm:w-12 flex items-center justify-center transition-transform group-hover:scale-110" style={{ transformStyle: "preserve-3d" }}>
                       {teamLogoUrls[team.shortName] ? (
                         <Image
                           src={teamLogoUrls[team.shortName]!}
@@ -253,7 +266,7 @@ export default function HomePage() {
                         </span>
                       )}
                     </div>
-                    <span className={`text-[9px] font-bold ${team.textColor}`}>
+                    <span className={`text-[9px] font-bold transition-colors ${team.textColor} group-hover:text-white`}>
                       {team.shortName}
                     </span>
                   </Link>
@@ -350,15 +363,29 @@ export default function HomePage() {
               8 tools built for cricket fans, businesses, and content creators.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" style={{ perspective: "1200px" }}>
             {/* Large card — poster (spans 2 cols on lg) */}
             {tools.slice(0, 1).map((tool) => (
               <Link
                 key={tool.href}
                 href={tool.href}
-                className={`group relative overflow-hidden rounded-2xl border ${tool.border} bg-card p-6 transition-all duration-300 hover:border-white/20 hover:shadow-xl lg:col-span-2`}
+                className={`group relative overflow-hidden rounded-2xl border ${tool.border} bg-card p-6 transition-all duration-300 hover:border-white/20 hover:shadow-2xl lg:col-span-2`}
+                style={{
+                  transformStyle: "preserve-3d",
+                  transform: "translateZ(0)",
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.3)"
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = (e.clientX - rect.left) / rect.width - 0.5;
+                  const y = (e.clientY - rect.top) / rect.height - 0.5;
+                  e.currentTarget.style.transform = `rotateX(${y * 8}deg) rotateY(${x * 8}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "rotateX(0) rotateY(0) translateZ(0)";
+                }}
               >
-                <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl ${tool.bg}`}>
+                <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl ${tool.bg} transition-transform group-hover:scale-110 group-hover:rotate-12`}>
                   <tool.icon className={`h-6 w-6 ${tool.color}`} />
                 </div>
                 {tool.badge && (
@@ -368,7 +395,7 @@ export default function HomePage() {
                 )}
                 <h3 className="mb-2 text-lg font-bold text-white">{tool.label}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{tool.description}</p>
-                <span className={`mt-4 inline-flex items-center gap-1 text-xs font-semibold ${tool.color} opacity-0 transition-opacity group-hover:opacity-100`}>
+                <span className={`mt-4 inline-flex items-center gap-1 text-xs font-semibold ${tool.color} opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-1`}>
                   Open Tool <ArrowRight className="h-3 w-3" />
                 </span>
               </Link>
@@ -378,9 +405,23 @@ export default function HomePage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className={`group relative overflow-hidden rounded-2xl border ${tool.border} bg-card p-5 transition-all duration-300 hover:border-white/20 hover:shadow-lg`}
+                className={`group relative overflow-hidden rounded-2xl border ${tool.border} bg-card p-5 transition-all duration-300 hover:border-white/20 hover:shadow-xl`}
+                style={{
+                  transformStyle: "preserve-3d",
+                  transform: "translateZ(0)",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.2)"
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = (e.clientX - rect.left) / rect.width - 0.5;
+                  const y = (e.clientY - rect.top) / rect.height - 0.5;
+                  e.currentTarget.style.transform = `rotateX(${y * 6}deg) rotateY(${x * 6}deg) translateZ(8px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "rotateX(0) rotateY(0) translateZ(0)";
+                }}
               >
-                <div className={`mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl ${tool.bg}`}>
+                <div className={`mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl ${tool.bg} transition-transform group-hover:scale-110 group-hover:rotate-12`}>
                   <tool.icon className={`h-5 w-5 ${tool.color}`} />
                 </div>
                 {tool.badge && (
@@ -390,7 +431,7 @@ export default function HomePage() {
                 )}
                 <h3 className="mb-1.5 text-sm font-bold text-white">{tool.label}</h3>
                 <p className="text-xs leading-relaxed text-muted-foreground">{tool.description}</p>
-                <span className={`mt-3 inline-flex items-center gap-1 text-xs font-semibold ${tool.color} opacity-0 transition-opacity group-hover:opacity-100`}>
+                <span className={`mt-3 inline-flex items-center gap-1 text-xs font-semibold ${tool.color} opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-1`}>
                   Open <ArrowRight className="h-3 w-3" />
                 </span>
               </Link>

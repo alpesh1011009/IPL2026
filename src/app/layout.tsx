@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
@@ -12,36 +13,50 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL("https://cricpost.in"),
   title: {
-    default: "CricPost — Free Cricket Poster & Meme Maker",
-    template: "%s | cricpost.in",
+    default: "CricPost — Free Cricket Poster & Meme Maker | IPL 2026",
+    template: "%s | CricPost - Cricket Poster Maker",
   },
   description:
-    "Create stunning IPL 2026 cricket posters, memes, and shareable content. Add your business branding, download instantly, and share on WhatsApp & Instagram. 100% free.",
+    "Create stunning IPL 2026 cricket posters, player cards, memes & match designs. Add your business branding, download instantly as PNG/JPG, and share on WhatsApp & Instagram. 100% free, no registration needed.",
   keywords: [
     "cricket poster maker", "IPL poster", "IPL 2026", "cricket meme generator",
     "cricket player cards", "match poster download", "cricket WhatsApp status",
     "cricket business poster", "free cricket poster", "IPL schedule 2026",
     "cricpost", "cricket fan poster", "IPL memes", "cricket quiz",
+    "cricket design", "social media cricket content", "cricket graphics",
+    "team poster", "player card maker", "cricket fan tools"
   ],
   authors: [{ name: "CricPost", url: "https://cricpost.in" }],
   creator: "CricPost",
   publisher: "CricPost",
   applicationName: "CricPost",
   category: "sports",
+  formatDetection: {
+    email: false,
+    telephone: false,
+    address: false,
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: "https://cricpost.in",
     siteName: "CricPost",
-    title: "CricPost — Free Cricket Poster & Meme Maker",
+    title: "CricPost — Free Cricket Poster & Meme Maker | IPL 2026",
     description:
-      "Create IPL 2026 match posters, player cards & memes with your business branding. Free download. Share on WhatsApp & Instagram.",
+      "Create IPL 2026 match posters, player cards & memes with your business branding. Free download. Share on WhatsApp & Instagram instantly.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "CricPost — Cricket Poster & Meme Maker",
+        type: "image/png",
       },
     ],
   },
@@ -57,15 +72,22 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
       "max-image-preview": "large",
       "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
   alternates: {
     canonical: "https://cricpost.in",
+    languages: {
+      "en-IN": "https://cricpost.in",
+      "hi-IN": "https://cricpost.in?lang=hi",
+      "gu-IN": "https://cricpost.in?lang=gu",
+    },
   },
 };
 
@@ -77,6 +99,18 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+        {/* Viewport & Mobile optimization */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="CricPost" />
+        <meta name="theme-color" content="#09090b" />
+
+        {/* Additional SEO */}
+        <meta name="color-scheme" content="dark" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta httpEquiv="x-ua-compatible" content="IE=edge" />
+
         {/* Structured data */}
         <script
           type="application/ld+json"
@@ -91,7 +125,15 @@ export default function RootLayout({
                   name: "CricPost",
                   description:
                     "Free cricket poster maker with business branding — IPL 2026 match posters, player cards, memes & more.",
-                  inLanguage: "en-IN",
+                  inLanguage: ["en-IN", "hi-IN", "gu-IN"],
+                  potentialAction: {
+                    "@type": "SearchAction",
+                    target: {
+                      "@type": "EntryPoint",
+                      urlTemplate: "https://cricpost.in/search?q={search_term_string}",
+                    },
+                    "query-input": "required name=search_term_string",
+                  },
                 },
                 {
                   "@type": "Organization",
@@ -103,6 +145,24 @@ export default function RootLayout({
                     url: "https://cricpost.in/icon.svg",
                   },
                   sameAs: ["https://instagram.com/cricpost_in"],
+                  contactPoint: {
+                    "@type": "ContactPoint",
+                    url: "https://cricpost.in/help",
+                    contactType: "Customer Support",
+                  },
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "@id": "https://cricpost.in/#app",
+                  name: "CricPost",
+                  description: "Free cricket poster and meme maker for IPL 2026",
+                  url: "https://cricpost.in",
+                  applicationCategory: "Sports",
+                  offers: {
+                    "@type": "Offer",
+                    price: "0",
+                    priceCurrency: "INR",
+                  },
                 },
               ],
             }),
@@ -126,6 +186,28 @@ export default function RootLayout({
           </LanguageProvider>
         </AuthProvider>
       </body>
+
+      {/* Google Analytics */}
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <>
+          <Script
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+          />
+          <Script
+            id="google-analytics"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+              `,
+            }}
+          />
+        </>
+      )}
     </html>
   );
 }

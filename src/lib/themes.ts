@@ -1,4 +1,4 @@
-export type ThemeKey = "orange" | "violet" | "cyan" | "rose" | "green" | "gold";
+export type ThemeKey = "orange" | "violet" | "cyan" | "rose" | "green" | "gold" | "indigo" | "teal";
 
 export interface Theme {
   key: ThemeKey;
@@ -25,8 +25,8 @@ export const themes: Record<ThemeKey, Theme> = {
   violet: {
     key: "violet",
     name: "Violet",
-    primary: "#8b5cf6",
-    primaryFg: "#ffffff",
+    primary: "#a78bfa",
+    primaryFg: "#0a0a12",
     bg: "#0a0a12",
     card: "#13111f",
     secondary: "#1e1b2e",
@@ -35,8 +35,8 @@ export const themes: Record<ThemeKey, Theme> = {
   cyan: {
     key: "cyan",
     name: "Cyan",
-    primary: "#06b6d4",
-    primaryFg: "#09090b",
+    primary: "#22d3ee",
+    primaryFg: "#080d10",
     bg: "#080d10",
     card: "#0d1820",
     secondary: "#112028",
@@ -45,7 +45,7 @@ export const themes: Record<ThemeKey, Theme> = {
   rose: {
     key: "rose",
     name: "Rose",
-    primary: "#f43f5e",
+    primary: "#fb7185",
     primaryFg: "#ffffff",
     bg: "#0f0709",
     card: "#1a0d10",
@@ -55,8 +55,8 @@ export const themes: Record<ThemeKey, Theme> = {
   green: {
     key: "green",
     name: "Green",
-    primary: "#22c55e",
-    primaryFg: "#09090b",
+    primary: "#4ade80",
+    primaryFg: "#080c09",
     bg: "#080c09",
     card: "#0e1810",
     secondary: "#132015",
@@ -65,16 +65,36 @@ export const themes: Record<ThemeKey, Theme> = {
   gold: {
     key: "gold",
     name: "Gold",
-    primary: "#eab308",
-    primaryFg: "#09090b",
+    primary: "#fbbf24",
+    primaryFg: "#0b0a05",
     bg: "#0b0a05",
     card: "#181500",
     secondary: "#241f00",
     border: "#3a3200",
   },
+  indigo: {
+    key: "indigo",
+    name: "Indigo",
+    primary: "#818cf8",
+    primaryFg: "#0a0a0f",
+    bg: "#0a0a0f",
+    card: "#141421",
+    secondary: "#1a1735",
+    border: "#2e2a5e",
+  },
+  teal: {
+    key: "teal",
+    name: "Teal",
+    primary: "#2dd4bf",
+    primaryFg: "#080d0b",
+    bg: "#080d0b",
+    card: "#0f1a17",
+    secondary: "#142827",
+    border: "#1e3d36",
+  },
 };
 
-export const THEME_ORDER: ThemeKey[] = ["orange", "violet", "cyan", "rose", "green", "gold"];
+export const THEME_ORDER: ThemeKey[] = ["orange", "indigo", "cyan", "teal", "rose", "green", "violet", "gold"];
 export const DEFAULT_THEME: ThemeKey = "orange";
 
 export function applyTheme(key: ThemeKey) {
