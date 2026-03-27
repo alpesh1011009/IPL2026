@@ -15,7 +15,8 @@
       "WebFetch(domain:www.sportsyaari.com)",
       "WebFetch(domain:www.indiatvnews.com)",
       "WebFetch(domain:thefederal.com)",
-      "WebFetch(domain:sports.yahoo.com)"
+      "WebFetch(domain:sports.yahoo.com)",
+      "Bash(pnpm run:*)"
     ]
   }
 }

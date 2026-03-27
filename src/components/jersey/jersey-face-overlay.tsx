@@ -40,7 +40,7 @@ export function JerseyFaceOverlay() {
       const img = event.target?.result as string;
       setUploadedImage(img);
       setProcessedImage(null);
-      analytics.jerseyPhotoUploaded();
+      //analytics.jerseyPhotoUploaded();
     };
     reader.readAsDataURL(file);
   };
