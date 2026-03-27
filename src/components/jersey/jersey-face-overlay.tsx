@@ -73,7 +73,7 @@ export function JerseyFaceOverlay() {
         // Get result
         const result = canvas.toDataURL('image/png');
         setProcessedImage(result);
-        analytics.jerseyApplied(selectedTeam);
+        //sanalytics.jerseyApplied(selectedTeam);
       };
       img.src = uploadedImage;
 
@@ -300,7 +300,7 @@ export function JerseyFaceOverlay() {
     link.href = processedImage;
     link.download = `jersey-${selectedTeam}-${Date.now()}.png`;
     link.click();
-    analytics.jerseyPhotoDownloaded(selectedTeam);
+    //analytics.jerseyPhotoDownloaded(selectedTeam);
   };
 
   // Reset
