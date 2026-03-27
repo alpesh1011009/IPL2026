@@ -49,10 +49,10 @@ export function SchedulePageHero() {
         </div>
       </div>
 
-      <div className="mt-8 rounded-xl border border-yellow-500/20 bg-yellow-500/5 p-4 text-center schedule-phase2-notice">
+      {/* <div className="mt-8 rounded-xl border border-yellow-500/20 bg-yellow-500/5 p-4 text-center schedule-phase2-notice">
         <p className="text-sm font-medium text-yellow-400">{t("phase2ComingSoon")}</p>
         <p className="mt-1 text-xs text-muted-foreground">{t("phase2Desc")}</p>
-      </div>
+      </div> */}
     </>
   );
 }
