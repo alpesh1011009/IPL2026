@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Project/IPLPro/src -name *tools* -o -name *config*)",
+      "Bash(grep -r html2canvas /c/Project/IPLPro/src --include=*.ts --include=*.tsx)",
+      "Bash(find /c/Project/IPLPro -maxdepth 2 -name *.json -o -name *.config.*)",
+      "Bash(find /c/Project/IPLPro -maxdepth 2 -type f \\\\\\(-name *.png -o -name *.jpg -o -name *.svg \\\\\\))",
+      "Bash(ls -la /c/Project/IPLPro/src/app/\\\\\\(auth\\\\\\)/)",
+      "Bash(ls -la \"/c/Project/IPLPro/src/app/\\(auth\\)/login/\")",
+      "Bash(ls -la \"/c/Project/IPLPro/src/app/\\(dashboard\\)/\")",
+      "Bash(/tmp/directory_structure.txt:*)",
+      "Read(//tmp/**)",
+      "WebFetch(domain:www.pratidintime.com)",
+      "WebFetch(domain:ipl2026.net)",
+      "WebFetch(domain:www.sportsyaari.com)",
+      "WebFetch(domain:www.indiatvnews.com)",
+      "WebFetch(domain:thefederal.com)",
+      "WebFetch(domain:sports.yahoo.com)"
+    ]
+  }
+}

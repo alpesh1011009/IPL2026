@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
+import { MobileBottomNav } from "@/components/ui/mobile-bottom-nav";
 import { ThemeProvider } from "@/context/theme-context";
 import { AuthProvider } from "@/context/auth-context";
 import { LanguageProvider } from "@/context/language-context";
@@ -14,10 +15,10 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://cricpost.in"),
   title: {
     default: "CricPost — Free Cricket Poster & Meme Maker | IPL 2026",
-    template: "%s | CricPost - Cricket Poster Maker",
+    template: "%s | CricPost",
   },
   description:
-    "Create stunning IPL 2026 cricket posters, player cards, memes & match designs. Add your business branding, download instantly as PNG/JPG, and share on WhatsApp & Instagram. 100% free, no registration needed.",
+    "Create IPL 2026 cricket posters, player cards & memes with business branding. Download PNG, share on WhatsApp & Instagram. 100% free, no registration needed.",
   keywords: [
     "cricket poster maker", "IPL poster", "IPL 2026", "cricket meme generator",
     "cricket player cards", "match poster download", "cricket WhatsApp status",
@@ -83,11 +84,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://cricpost.in",
-    languages: {
-      "en-IN": "https://cricpost.in",
-      "hi-IN": "https://cricpost.in?lang=hi",
-      "gu-IN": "https://cricpost.in?lang=gu",
-    },
   },
 };
 
@@ -180,8 +176,9 @@ export default function RootLayout({
           <LanguageProvider>
             <ThemeProvider>
               <Header />
-              <main className="flex-1">{children}</main>
+              <main className="flex-1 pb-16 sm:pb-0">{children}</main>
               <Footer />
+              <MobileBottomNav />
             </ThemeProvider>
           </LanguageProvider>
         </AuthProvider>

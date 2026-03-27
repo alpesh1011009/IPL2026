@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { InstagramClient } from "./instagram-client";
 
 export const metadata: Metadata = {
-  title: "IPL Instagram Posts — Ready-to-Post Marketing Images",
+  title: "IPL Instagram Posts — Download Free",
   description:
     "Download IPL 2026 Instagram post images with ready-to-copy captions. Team hype, match day, cricket facts — download & share in seconds.",
   keywords: [
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://cricpost.in/instagram" },
   openGraph: {
-    title: "IPL Instagram Posts — Ready-to-Post Marketing Images",
+    title: "IPL Instagram Posts — Download Free",
     description:
       "Download IPL 2026 Instagram post images with ready-to-copy captions. Team hype, match day, cricket facts.",
     url: "https://cricpost.in/instagram",

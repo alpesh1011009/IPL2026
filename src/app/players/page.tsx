@@ -3,20 +3,20 @@ import { PlayersGrid } from "@/components/players/players-grid";
 import { PlayersPageHero } from "@/components/players/players-page-hero";
 
 export const metadata: Metadata = {
-  title: "IPL 2026 Player Cards — Download Free Digital Trading Cards",
+  title: "IPL 2026 Player Cards — Free Digital Download",
   description:
     "Download free digital trading cards for 150+ IPL 2026 cricketers. Filter by team or role and share on WhatsApp & Instagram instantly.",
   keywords: ["IPL player cards", "cricket trading cards", "IPL 2026 players", "cricket player download", "IPL squad 2026"],
   alternates: { canonical: "https://cricpost.in/players" },
   openGraph: {
-    title: "IPL 2026 Player Cards — Download Free Digital Trading Cards",
+    title: "IPL 2026 Player Cards — Free Digital Download",
     description: "Free digital trading cards for 150+ IPL cricketers. Download PNG & share instantly.",
     url: "https://cricpost.in/players",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "IPL 2026 Player Cards — Download Free Digital Trading Cards",
+    title: "IPL 2026 Player Cards — Free Digital Download",
     description: "Free digital trading cards for 150+ IPL cricketers.",
     images: ["/og-image.png"],
   },

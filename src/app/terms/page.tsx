@@ -2,9 +2,20 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
-  description: "Terms and Conditions for using CricPost — the free cricket poster and meme maker.",
+  description: "Terms and Conditions for using CricPost — the free cricket poster and meme maker. Covers usage rights, content policy, and privacy.",
   robots: { index: true, follow: true },
   alternates: { canonical: "https://cricpost.in/terms" },
+  openGraph: {
+    title: "Terms & Conditions | CricPost",
+    description: "Terms and Conditions for CricPost — free cricket poster and meme maker.",
+    url: "https://cricpost.in/terms",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms & Conditions | CricPost",
+    description: "Terms and Conditions for CricPost — free cricket poster and meme maker.",
+  },
 };
 
 export default function TermsPage() {

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import {
   Menu, X, Zap, Building2, Phone, Globe,
@@ -83,6 +84,7 @@ const moreLinkDefs: { href: string; labelKey: TranslationKey; icon: React.Elemen
   { href: "/poster", labelKey: "createPoster", icon: ImageIcon },
   { href: "/quiz", labelKey: "cricketQuiz", icon: HelpCircle },
   { href: "/help", labelKey: "helpAndGuide", icon: BookOpen },
+  { href: "/about", labelKey: "aboutUs", icon: Users },
 ];
 
 const BIZ_POPUP_KEY = "cricpost_biz_popup_shown";
@@ -136,6 +138,9 @@ function MoreDropdown() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
+  const pathname = usePathname();
+
+  const anyMoreActive = moreLinkDefs.some(({ href }) => pathname === href || pathname.startsWith(href + "/"));
 
   useEffect(() => {
     function handler(e: MouseEvent) {
@@ -149,24 +154,33 @@ function MoreDropdown() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-secondary"
+        className={cn(
+          "flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-foreground hover:bg-secondary",
+          anyMoreActive ? "text-primary bg-primary/10" : "text-muted-foreground"
+        )}
       >
         {t("more")}
         <ChevronDown className={cn("h-3.5 w-3.5 transition-transform", open && "rotate-180")} />
       </button>
       {open && (
         <div className="absolute left-0 top-full mt-1 w-48 rounded-xl border border-white/10 bg-[#111113] shadow-2xl shadow-black/60 z-50 py-1">
-          {moreLinkDefs.map(({ href, labelKey, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setOpen(false)}
-              className="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
-            >
-              <Icon className="h-4 w-4" />
-              {t(labelKey) as string}
-            </Link>
-          ))}
+          {moreLinkDefs.map(({ href, labelKey, icon: Icon }) => {
+            const active = pathname === href || pathname.startsWith(href + "/");
+            return (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setOpen(false)}
+                className={cn(
+                  "flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium transition-colors hover:bg-white/5",
+                  active ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                <Icon className="h-4 w-4" />
+                {t(labelKey) as string}
+              </Link>
+            );
+          })}
         </div>
       )}
     </div>
@@ -434,6 +448,7 @@ export function Header() {
   const { details, updateField, loaded } = useBusinessDetails();
   const { user, signOut, authLoading } = useAuth();
   const { t, lang, setLang } = useLanguage();
+  const pathname = usePathname();
   const businessSectionRef = useRef<HTMLButtonElement>(null);
 
   function openMobileBusiness() {
@@ -504,15 +519,21 @@ export function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-1">
-          {primaryLinkDefs.map(({ href, labelKey }) => (
-            <Link
-              key={href}
-              href={href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-secondary"
-            >
-              {t(labelKey) as string}
-            </Link>
-          ))}
+          {primaryLinkDefs.map(({ href, labelKey }) => {
+            const active = href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={cn(
+                  "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-foreground hover:bg-secondary",
+                  active ? "text-primary bg-primary/10" : "text-muted-foreground"
+                )}
+              >
+                {t(labelKey) as string}
+              </Link>
+            );
+          })}
           <MoreDropdown />
         </nav>
 
@@ -591,32 +612,48 @@ export function Header() {
 
           {/* Primary links grid */}
           <div className="grid grid-cols-2 gap-2 pb-2">
-            {primaryLinkDefs.map(({ href, labelKey, icon: Icon }) => (
-              <Link
-                key={href}
-                href={href}
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-2.5 rounded-xl border border-white/8 bg-white/[0.04] px-3 py-3 text-sm font-medium text-muted-foreground transition-colors active:bg-white/10 hover:text-foreground hover:bg-white/8"
-              >
-                <Icon className="h-4 w-4 flex-shrink-0 text-primary" />
-                <span className="leading-tight">{t(labelKey) as string}</span>
-              </Link>
-            ))}
+            {primaryLinkDefs.map(({ href, labelKey, icon: Icon }) => {
+              const active = href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(
+                    "flex items-center gap-2.5 rounded-xl border px-3 py-3 text-sm font-medium transition-colors active:bg-white/10",
+                    active
+                      ? "border-primary/30 bg-primary/10 text-primary"
+                      : "border-white/8 bg-white/[0.04] text-muted-foreground hover:text-foreground hover:bg-white/8"
+                  )}
+                >
+                  <Icon className="h-4 w-4 flex-shrink-0 text-primary" />
+                  <span className="leading-tight">{t(labelKey) as string}</span>
+                </Link>
+              );
+            })}
           </div>
 
           {/* More links grid */}
           <div className="grid grid-cols-2 gap-2 border-t border-white/8 pt-2">
-            {moreLinkDefs.map(({ href, labelKey, icon: Icon }) => (
-              <Link
-                key={href}
-                href={href}
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-2.5 rounded-xl border border-white/8 bg-white/[0.04] px-3 py-3 text-sm font-medium text-muted-foreground transition-colors active:bg-white/10 hover:text-foreground hover:bg-white/8"
-              >
-                <Icon className="h-4 w-4 flex-shrink-0 text-primary" />
-                <span className="leading-tight">{t(labelKey) as string}</span>
-              </Link>
-            ))}
+            {moreLinkDefs.map(({ href, labelKey, icon: Icon }) => {
+              const active = pathname === href || pathname.startsWith(href + "/");
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(
+                    "flex items-center gap-2.5 rounded-xl border px-3 py-3 text-sm font-medium transition-colors active:bg-white/10",
+                    active
+                      ? "border-primary/30 bg-primary/10 text-primary"
+                      : "border-white/8 bg-white/[0.04] text-muted-foreground hover:text-foreground hover:bg-white/8"
+                  )}
+                >
+                  <Icon className="h-4 w-4 flex-shrink-0 text-primary" />
+                  <span className="leading-tight">{t(labelKey) as string}</span>
+                </Link>
+              );
+            })}
           </div>
 
           {/* Mobile business details toggle */}

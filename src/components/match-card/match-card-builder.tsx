@@ -547,9 +547,49 @@ export function MatchCardBuilder() {
         <p className="mt-1 text-sm text-muted-foreground">Pick a match, upload your photo, and create a shareable card to announce your match day.</p>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
-        {/* ── Controls ── */}
-        <div className="space-y-5">
+      <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[1fr_auto] lg:gap-8 lg:items-start">
+        {/* ── Card Preview — first in DOM so it appears at the top on mobile ── */}
+        <div className="flex flex-col items-center gap-3 lg:sticky lg:top-[68px] lg:self-start lg:col-start-2 lg:row-start-1">
+          <div className="flex w-full items-center justify-between">
+            <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Preview</p>
+          </div>
+          {/* Download button — above card so it's always visible without scrolling */}
+          <button
+            onClick={handleDownload}
+            disabled={downloading}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-all hover:bg-primary/90 disabled:opacity-50"
+          >
+            {downloading ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Generating…
+              </>
+            ) : (
+              <>
+                <Download className="h-4 w-4" />
+                Download Card
+              </>
+            )}
+          </button>
+          <div className="overflow-x-auto" ref={cardRef}>
+            <CardFace
+              matchNumber={selectedMatch.matchNumber}
+              team1={selectedMatch.team1}
+              team2={selectedMatch.team2}
+              date={selectedMatch.date}
+              day={selectedMatch.day}
+              time={selectedMatch.time}
+              venue={selectedMatch.venue}
+              userPhoto={userPhoto}
+              userName={userName}
+              supportingTeam={supportingTeam}
+              businessDetails={businessDetails}
+            />
+          </div>
+        </div>
+
+        {/* ── Controls — below preview on mobile, left column on desktop ── */}
+        <div className="space-y-5 lg:col-start-1 lg:row-start-1">
 
           {/* Photo & Name — shown first so users fill in their details before picking a match */}
           <div className="rounded-2xl border border-white/10 bg-card p-5">
@@ -685,42 +725,6 @@ export function MatchCardBuilder() {
           </p>
         </div>
 
-        {/* ── Card Preview ── */}
-        <div className="flex w-full flex-col items-center gap-4 overflow-x-auto lg:sticky lg:top-24 lg:self-start lg:overflow-x-visible">
-          <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Preview</p>
-          <div ref={cardRef}>
-            <CardFace
-              matchNumber={selectedMatch.matchNumber}
-              team1={selectedMatch.team1}
-              team2={selectedMatch.team2}
-              date={selectedMatch.date}
-              day={selectedMatch.day}
-              time={selectedMatch.time}
-              venue={selectedMatch.venue}
-              userPhoto={userPhoto}
-              userName={userName}
-              supportingTeam={supportingTeam}
-              businessDetails={businessDetails}
-            />
-          </div>
-          <button
-            onClick={handleDownload}
-            disabled={downloading}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-all hover:bg-primary/90 disabled:opacity-50"
-          >
-            {downloading ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                Generating…
-              </>
-            ) : (
-              <>
-                <Download className="h-4 w-4" />
-                Download Card
-              </>
-            )}
-          </button>
-        </div>
       </div>
     </div>
   );
